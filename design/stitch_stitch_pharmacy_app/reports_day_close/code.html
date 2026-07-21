@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports &amp; Day Close - PharmaAssist</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary-container": "#007230",
+                    "primary": "#00685b",
+                    "surface-container": "#e5eeff",
+                    "outline-variant": "#bcc9c5",
+                    "on-tertiary-container": "#fffbff",
+                    "background": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#005320",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "primary-container": "#008373",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-primary-fixed": "#00201b",
+                    "primary-fixed": "#81f6e0",
+                    "on-primary-fixed-variant": "#005046",
+                    "on-surface-variant": "#3d4946",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "secondary-fixed-dim": "#62df7d",
+                    "secondary-container": "#7cf994",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "tertiary": "#825100",
+                    "primary-fixed-dim": "#63dac5",
+                    "secondary-fixed": "#7ffc97",
+                    "on-background": "#0b1c30",
+                    "surface-variant": "#d3e4fe",
+                    "on-primary-container": "#f4fffb",
+                    "surface-container-high": "#dce9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed": "#ffddb8",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline": "#6d7a76",
+                    "surface-tint": "#006b5d",
+                    "tertiary-container": "#a36700",
+                    "on-primary": "#ffffff",
+                    "surface": "#f8f9ff",
+                    "secondary": "#006e2d",
+                    "on-secondary-fixed": "#002109",
+                    "surface-bright": "#f8f9ff",
+                    "on-surface": "#0b1c30",
+                    "inverse-primary": "#63dac5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "base": "4px",
+                    "sm": "12px",
+                    "safe-bottom": "80px",
+                    "xs": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "label-hinglish": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "display-currency": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "26px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-hinglish": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "22px",
+                            {
+                                    "lineHeight": "30px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-currency": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .mic-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 104, 91, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 104, 91, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 104, 91, 0); }
+        }
+        
+        /* Bar chart minimal css */
+        .chart-bar {
+            width: 12%;
+            background-color: #e5eeff;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+        }
+        .chart-bar.active {
+            background-color: #00685b;
+        }
+        .chart-bar-inner {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #00685b;
+            border-radius: 4px 4px 0 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md pb-safe-bottom md:pb-0 overflow-x-hidden">
+<!-- Desktop Navigation Drawer (hidden on mobile) -->
+<div class="hidden md:flex flex-col w-72 h-full p-md bg-surface dark:bg-surface-dim shadow-lg fixed left-0 top-0 z-40 rounded-r-xl">
+<div class="mb-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">local_pharmacy</span>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary">PharmaAssist</h1>
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant">Store Dashboard</p>
+</div>
+</div>
+<div class="mb-lg pb-md border-b border-outline-variant/30">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-headline-md">
+                    AS
+                </div>
+<div>
+<h2 class="font-body-lg text-body-lg text-primary">Aman Sharma</h2>
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant">Shree Ram Pharmacy</p>
+<p class="text-xs text-outline">License: DL-20455</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors active:scale-98" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-body-md">Home</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors active:scale-98" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md">Billing</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors active:scale-98" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md">Stock</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors active:scale-98" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-body-md">Khata</span>
+</a>
+<a class="flex items-center gap-3 p-3 bg-primary-container text-on-primary-container font-bold rounded-lg transition-colors active:scale-98" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assessment</span>
+<span class="font-body-md">Inventory Reports</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors active:scale-98" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto">
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors active:scale-98" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md">Logout</span>
+</a>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="w-full md:pl-72 flex flex-col min-h-screen">
+<!-- TopAppBar (Mobile only for main nav, but used here as header for both) -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 z-30 sticky flex justify-between items-center px-md py-sm w-full border-b border-outline-variant/20 md:border-none">
+<div class="flex items-center gap-3">
+<button class="md:hidden text-primary p-2 active:scale-95 transition-transform rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary dark:text-primary-fixed-dim">Reports &amp; Close</h1>
+</div>
+<button class="text-primary p-2 active:scale-95 transition-transform rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<!-- Page Content Canvas -->
+<div class="flex-1 p-md md:p-xl max-w-5xl mx-auto w-full flex flex-col gap-lg">
+<!-- Date Selector Chips -->
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide -mx-md px-md md:mx-0 md:px-0">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-hinglish text-label-hinglish whitespace-nowrap active:scale-98 shadow-sm">
+                    Aaj (Today)
+                </button>
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface-variant px-4 py-2 rounded-full font-label-hinglish text-label-hinglish whitespace-nowrap active:scale-98 hover:bg-surface-container">
+                    Kal (Yesterday)
+                </button>
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface-variant px-4 py-2 rounded-full font-label-hinglish text-label-hinglish whitespace-nowrap active:scale-98 hover:bg-surface-container">
+                    This Month
+                </button>
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface-variant px-4 py-2 rounded-full font-label-hinglish text-label-hinglish whitespace-nowrap active:scale-98 hover:bg-surface-container flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_month</span> Custom
+                </button>
+</div>
+<!-- "Din ka hisaab" Card (Day Close Reconciliation) -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant shadow-sm relative overflow-hidden">
+<!-- Subtle background accent -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-bl-full -mr-10 -mt-10 pointer-events-none"></div>
+<div class="flex items-start justify-between mb-4 relative z-10">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Din ka Hisaab</h2>
+<p class="font-label-hinglish text-label-hinglish text-outline">Cash drawer reconciliation</p>
+</div>
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-2 rounded-lg">point_of_sale</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md items-center bg-surface p-4 rounded-lg border border-outline-variant/50">
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-1">Expected Cash (System)</p>
+<p class="font-display-currency text-display-currency text-primary">₹9,100</p>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-hinglish text-label-hinglish text-on-surface-variant">Actual Cash Counted</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-headline-md text-on-surface-variant">₹</span>
+<input class="w-full pl-8 pr-4 py-3 rounded-lg border-outline-variant bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:border-primary font-headline-md text-on-surface transition-all" id="actualCash" type="number" value="8900"/>
+</div>
+<!-- Dynamic Status Indicator -->
+<div class="flex items-center gap-1 mt-1 text-error" id="cashMismatch">
+<span class="material-symbols-outlined text-sm">error</span>
+<span class="font-label-hinglish text-label-hinglish">₹200 kam hai (Shortfall)</span>
+</div>
+<!-- Success state (hidden by default in this demo state) -->
+<div class="hidden items-center gap-1 mt-1 text-secondary" id="cashMatch">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="font-label-hinglish text-label-hinglish">Perfect match!</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 bg-primary text-on-primary py-3 rounded-lg font-headline-md text-headline-md active:scale-98 transition-transform shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">lock</span> Close Day
+                </button>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 gap-sm md:gap-md">
+<!-- Sale -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between h-32 active:scale-98 transition-transform cursor-pointer">
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">payments</span> Total Sale
+                    </p>
+<p class="font-headline-md text-headline-md text-on-surface">₹18,240</p>
+</div>
+<!-- Profit -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-secondary-container bg-gradient-to-br from-surface-container-lowest to-secondary-container/10 shadow-sm flex flex-col justify-between h-32 active:scale-98 transition-transform cursor-pointer">
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary">trending_up</span> Est. Profit
+                    </p>
+<p class="font-headline-md text-headline-md text-secondary">₹3,450</p>
+</div>
+<!-- Bills Count -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between h-32 active:scale-98 transition-transform cursor-pointer">
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">receipt</span> Bills Count
+                    </p>
+<p class="font-headline-md text-headline-md text-on-surface">42</p>
+</div>
+<!-- Avg Bill -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between h-32 active:scale-98 transition-transform cursor-pointer">
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calculate</span> Avg Bill Value
+                    </p>
+<p class="font-headline-md text-headline-md text-on-surface">₹434</p>
+</div>
+</div>
+<!-- Bar Chart Card (Bento style) -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Last 7 Days Sales</h3>
+<button class="text-primary font-label-hinglish text-label-hinglish active:scale-95">View All</button>
+</div>
+<div class="h-40 flex items-end justify-between px-2 gap-1 relative">
+<!-- Grid lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="w-full border-t border-outline-variant/30 h-0"></div>
+<div class="w-full border-t border-outline-variant/30 h-0"></div>
+<div class="w-full border-t border-outline-variant/30 h-0"></div>
+<div class="w-full border-t border-outline-variant/30 h-0 text-xs text-outline absolute bottom-1 right-full pr-1">0</div>
+</div>
+<!-- Bars (Vanilla HTML/CSS simulation) -->
+<div class="chart-bar h-16"><div class="chart-bar-inner h-full"></div><span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-outline">Mon</span></div>
+<div class="chart-bar h-24"><div class="chart-bar-inner h-full"></div><span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-outline">Tue</span></div>
+<div class="chart-bar h-20"><div class="chart-bar-inner h-full"></div><span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-outline">Wed</span></div>
+<div class="chart-bar h-32 active"><div class="chart-bar-inner h-full bg-primary"></div><span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs font-bold text-primary">Thu</span></div>
+<div class="chart-bar h-12"><div class="chart-bar-inner h-full"></div><span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-outline">Fri</span></div>
+<div class="chart-bar h-28"><div class="chart-bar-inner h-full"></div><span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-outline">Sat</span></div>
+<div class="chart-bar h-10"><div class="chart-bar-inner h-full"></div><span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-outline">Sun</span></div>
+</div>
+<div class="mt-8 text-center">
+<p class="text-xs text-on-surface-variant bg-surface inline-block px-3 py-1 rounded-full border border-outline-variant/50">Peak day: <span class="font-bold">Thursday (₹21,500)</span></p>
+</div>
+</div>
+<!-- Actionable Report Sections (List) -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<a class="flex items-center justify-between p-md border-b border-outline-variant/50 hover:bg-surface-container active:bg-surface-variant transition-colors" href="#">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">Fast Movers</h4>
+<p class="font-label-hinglish text-label-hinglish text-outline">Top selling medicines today</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-md border-b border-outline-variant/50 hover:bg-surface-container active:bg-surface-variant transition-colors" href="#">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-error-container/50 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">hourglass_disabled</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">Dead Stock</h4>
+<p class="font-label-hinglish text-label-hinglish text-outline">90 din se nahi bika</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-error text-on-error text-xs font-bold px-2 py-1 rounded-full">12 items</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</a>
+<a class="flex items-center justify-between p-md border-b border-outline-variant/50 hover:bg-surface-container active:bg-surface-variant transition-colors" href="#">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">cancel_presentation</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">Missed Sales (Bouncer)</h4>
+<p class="font-label-hinglish text-label-hinglish text-outline">Stock out items asked by customers</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-md hover:bg-surface-container active:bg-surface-variant transition-colors" href="#">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-on-surface">GST Summary (GSTR-1)</h4>
+<p class="font-label-hinglish text-label-hinglish text-outline">Monthly tax report ready</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+</div>
+<!-- Share Report Action -->
+<div class="pt-4 pb-8">
+<button class="w-full bg-surface-container border-2 border-primary text-primary py-4 rounded-xl font-headline-md text-headline-md active:scale-98 transition-transform flex items-center justify-center gap-2 hover:bg-primary hover:text-on-primary group">
+<span class="material-symbols-outlined group-hover:animate-bounce">share</span> Report Share Karo (PDF/WhatsApp)
+                </button>
+</div>
+</div>
+</main>
+<!-- Voice Mic FAB (Persistent) -->
+<button aria-label="Voice Input" class="fixed bottom-[100px] md:bottom-lg right-md md:right-lg w-16 h-16 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-40 active:scale-95 transition-transform mic-pulse">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<!-- Mobile BottomNavBar (Hidden on md and above) -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-safe-bottom bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant shadow-sm md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-surface-container rounded-xl transition-colors min-w-[64px]" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-hinglish text-label-hinglish mt-1 text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-surface-container rounded-xl transition-colors min-w-[64px]" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-hinglish text-label-hinglish mt-1 text-[10px]">Billing</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-surface-container rounded-xl transition-colors min-w-[64px]" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-hinglish text-label-hinglish mt-1 text-[10px]">Stock</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-surface-container rounded-xl transition-colors min-w-[64px]" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-hinglish text-label-hinglish mt-1 text-[10px]">Khata</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-secondary-container/30 rounded-xl px-4 py-2 active:scale-98 transition-all duration-200 min-w-[64px]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-label-hinglish text-label-hinglish mt-1 text-[10px]">More</span>
+</a>
+</nav>
+<!-- Vanilla JS for basic interaction -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const actualCashInput = document.getElementById('actualCash');
+            const cashMismatch = document.getElementById('cashMismatch');
+            const cashMatch = document.getElementById('cashMatch');
+            const expectedCash = 9100;
+
+            actualCashInput.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value) || 0;
+                if (val === expectedCash) {
+                    cashMismatch.classList.add('hidden');
+                    cashMismatch.classList.remove('flex');
+                    cashMatch.classList.remove('hidden');
+                    cashMatch.classList.add('flex');
+                } else {
+                    cashMatch.classList.add('hidden');
+                    cashMatch.classList.remove('flex');
+                    cashMismatch.classList.remove('hidden');
+                    cashMismatch.classList.add('flex');
+                    
+                    const diff = expectedCash - val;
+                    const textSpan = cashMismatch.querySelector('span:nth-child(2)');
+                    if (diff > 0) {
+                        cashMismatch.classList.remove('text-secondary', 'text-tertiary');
+                        cashMismatch.classList.add('text-error');
+                        cashMismatch.querySelector('span:first-child').textContent = 'error';
+                        textSpan.textContent = `₹${diff} kam hai (Shortfall)`;
+                    } else {
+                        cashMismatch.classList.remove('text-error', 'text-secondary');
+                        cashMismatch.classList.add('text-tertiary');
+                        cashMismatch.querySelector('span:first-child').textContent = 'warning';
+                        textSpan.textContent = `₹${Math.abs(diff)} zyada hai (Excess)`;
+                    }
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sharma Medical Store - Item Search Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#7cf994",
+                      "secondary-fixed-dim": "#62df7d",
+                      "surface-container-low": "#eff4ff",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed": "#00201b",
+                      "inverse-surface": "#213145",
+                      "surface-container": "#e5eeff",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "secondary": "#006e2d",
+                      "error-container": "#ffdad6",
+                      "on-background": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "on-surface": "#0b1c30",
+                      "outline": "#6d7a76",
+                      "on-secondary-fixed-variant": "#005320",
+                      "surface": "#f8f9ff",
+                      "on-primary-container": "#f4fffb",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#f8f9ff",
+                      "primary-container": "#008373",
+                      "inverse-primary": "#63dac5",
+                      "on-secondary-container": "#007230",
+                      "primary": "#00685b",
+                      "on-surface-variant": "#3d4946",
+                      "inverse-on-surface": "#eaf1ff",
+                      "tertiary": "#825100",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "primary-fixed": "#81f6e0",
+                      "on-tertiary-container": "#fffbff",
+                      "secondary-fixed": "#7ffc97",
+                      "surface-dim": "#cbdbf5",
+                      "tertiary-container": "#a36700",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#2a1700",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "on-secondary-fixed": "#002109",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#005046",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#006b5d",
+                      "surface-variant": "#d3e4fe",
+                      "outline-variant": "#bcc9c5",
+                      "primary-fixed-dim": "#63dac5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "md": "16px",
+                      "sm": "12px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "safe-bottom": "80px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-currency": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-hinglish": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-currency": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-hinglish": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "22px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md">
+<!-- Top Navigation Container -->
+<header class="bg-surface dark:bg-background text-primary dark:text-primary-fixed docked full-width top-0 bg-surface dark:bg-background border-b border-outline-variant flat no shadows flex justify-between items-center px-md py-sm w-full sticky z-40">
+<div class="flex items-center gap-xs">
+<button class="material-symbols-outlined text-on-surface-variant scale-95 active:scale-90 transition-transform">arrow_back</button>
+</div>
+<!-- Search Field -->
+<div class="flex-1 mx-sm">
+<div class="relative flex items-center bg-surface-container-high rounded-full px-sm py-2">
+<span class="material-symbols-outlined text-outline-variant mr-2">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-body-lg text-on-surface font-body-lg p-0" placeholder="Search Medicine..." type="text" value="Dolo 650"/>
+<button class="material-symbols-outlined text-outline-variant ml-2">close</button>
+</div>
+</div>
+<div class="flex items-center gap-xs">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors rounded-full p-2 scale-95 active:scale-90 transition-transform">qr_code_scanner</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-md pb-safe-bottom pt-sm max-w-3xl mx-auto flex flex-col gap-sm">
+<!-- Results Header -->
+<div class="flex justify-between items-end mb-1">
+<h2 class="font-headline-md text-headline-md text-on-surface">Search Results</h2>
+<span class="font-label-hinglish text-label-hinglish text-outline">3 items found</span>
+</div>
+<!-- Result Card 1: Expanded (Exact Match) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden transition-transform">
+<!-- Header Section -->
+<div class="p-md flex justify-between items-start border-b border-surface-variant">
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Dolo 650 Tablet</h3>
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant mt-1">Paracetamol (650mg)</p>
+<p class="font-label-hinglish text-label-hinglish text-outline mt-0.5">Micro Labs Ltd</p>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="font-headline-md text-headline-md text-primary">₹32</span>
+<span class="font-label-hinglish text-label-hinglish text-secondary bg-secondary-container px-2 py-0.5 rounded-full mt-1">In stock: 14 strip</span>
+</div>
+</div>
+<!-- Batch Selection Area -->
+<div class="bg-surface-container-low p-sm">
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant mb-2">Select Batch (Earliest expiry first)</p>
+<div class="flex flex-col gap-2">
+<!-- Batch Chip 1 (Selected/Earliest) -->
+<label class="flex items-center justify-between bg-primary-container text-on-primary-container border-2 border-primary rounded-lg p-sm cursor-pointer scale-98 transition-transform">
+<div class="flex items-center gap-xs">
+<input checked="" class="form-radio text-primary focus:ring-primary h-5 w-5 border-outline" name="dolo-batch" type="radio"/>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md font-semibold">B-A123</span>
+<span class="text-xs bg-inverse-primary text-on-primary-fixed px-1.5 py-0.5 rounded-sm font-semibold uppercase tracking-wider">Ye pehle becho</span>
+</div>
+<span class="font-label-hinglish text-label-hinglish opacity-90 block mt-0.5">Exp 08/27 · 4 strip</span>
+</div>
+</div>
+<span class="font-body-md text-body-md font-semibold">₹30.5</span>
+</label>
+<!-- Batch Chip 2 -->
+<label class="flex items-center justify-between bg-surface-container-lowest border border-outline-variant hover:border-outline rounded-lg p-sm cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-xs">
+<input class="form-radio text-primary focus:ring-primary h-5 w-5 border-outline" name="dolo-batch" type="radio"/>
+<div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">B-X789</span>
+<span class="font-label-hinglish text-label-hinglish text-on-surface-variant block mt-0.5">Exp 12/28 · 10 strip</span>
+</div>
+</div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">₹32</span>
+</label>
+</div>
+<div class="mt-sm flex justify-end">
+<button class="bg-primary text-on-primary font-body-md text-body-md px-md py-2 rounded-lg font-semibold active:scale-95 transition-transform">Add to Bill</button>
+</div>
+</div>
+</div>
+<!-- Result Card 2: Out of Stock -->
+<div class="bg-surface-container-lowest border border-error-container rounded-xl overflow-hidden opacity-90">
+<div class="p-md flex justify-between items-start">
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Dolo 650 Suspension</h3>
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant mt-1">Paracetamol (650mg/5ml)</p>
+<p class="font-label-hinglish text-label-hinglish text-outline mt-0.5">Micro Labs Ltd</p>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="font-headline-md text-headline-md text-on-surface">₹45</span>
+<span class="font-label-hinglish text-label-hinglish text-error bg-error-container px-2 py-0.5 rounded-full mt-1">Out of stock</span>
+</div>
+</div>
+</div>
+<!-- Alternatives Section -->
+<div class="mt-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">compare_arrows</span>
+                Same salt available (Alternatives)
+            </h2>
+<div class="flex flex-col gap-sm">
+<!-- Alternative Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex justify-between items-center active:scale-98 transition-transform cursor-pointer hover:bg-surface-container">
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Crocin 650 Advance</h3>
+<span class="font-label-hinglish text-label-hinglish bg-secondary text-on-secondary px-2 py-0.5 rounded text-xs font-bold">+18% Margin</span>
+</div>
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant mt-1">GSK Pharmaceuticals</p>
+<p class="font-label-hinglish text-label-hinglish text-secondary font-medium mt-1">In stock: 22 strip</p>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-on-surface">₹30</span>
+<button class="material-symbols-outlined text-primary ml-4 p-2 rounded-full hover:bg-primary-container transition-colors">add_circle</button>
+</div>
+</div>
+<!-- Alternative Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex justify-between items-center active:scale-98 transition-transform cursor-pointer hover:bg-surface-container">
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Calpol 650 Tablet</h3>
+<span class="font-label-hinglish text-label-hinglish bg-secondary text-on-secondary px-2 py-0.5 rounded text-xs font-bold">+12% Margin</span>
+</div>
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant mt-1">GSK Pharmaceuticals</p>
+<p class="font-label-hinglish text-label-hinglish text-secondary font-medium mt-1">In stock: 8 strip</p>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-on-surface">₹31</span>
+<button class="material-symbols-outlined text-primary ml-4 p-2 rounded-full hover:bg-primary-container transition-colors">add_circle</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Actions (Footer) -->
+<div class="fixed bottom-0 w-full z-40 bg-surface border-t border-outline-variant p-sm pb-md">
+<div class="max-w-3xl mx-auto flex gap-sm">
+<button class="flex-1 border-2 border-outline-variant text-on-surface font-headline-md text-headline-md py-3 rounded-xl hover:bg-surface-container transition-colors active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">edit_note</span>
+                Missed Sale note karo
+            </button>
+</div>
+</div>
+</body></html>

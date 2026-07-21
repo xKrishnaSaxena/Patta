@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Suppliers &amp; Payments - Sharma Medical Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed-dim": "#63dac5",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#f4fffb",
+                        "secondary": "#006e2d",
+                        "surface-tint": "#006b5d",
+                        "on-surface": "#0b1c30",
+                        "tertiary-container": "#a36700",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "outline-variant": "#bcc9c5",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary-fixed": "#00201b",
+                        "on-secondary-container": "#007230",
+                        "primary": "#00685b",
+                        "primary-container": "#008373",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#81f6e0",
+                        "on-primary-fixed-variant": "#005046",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-surface-variant": "#3d4946",
+                        "tertiary": "#825100",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container": "#e5eeff",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed": "#002109",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#63dac5",
+                        "secondary-container": "#7cf994",
+                        "outline": "#6d7a76",
+                        "secondary-fixed": "#7ffc97",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-container": "#fffbff",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#62df7d",
+                        "on-secondary-fixed-variant": "#005320",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "background": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "safe-bottom": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-currency": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-hinglish": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["22px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-hinglish": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .pulse-mic { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 107, 93, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 107, 93, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 107, 93, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen relative pb-safe-bottom">
+<!-- TopAppBar from JSON -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim z-40 flat no shadows flex items-center justify-between px-md py-sm">
+<div class="flex items-center gap-sm text-primary dark:text-primary-fixed scale-95 active:scale-90 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="text-headline-md-mobile font-headline-md-mobile text-primary dark:text-primary-fixed">Sharma Medical Store</span>
+</div>
+<div class="text-label-hinglish font-label-hinglish text-on-surface-variant dark:text-outline bg-surface-container dark:bg-surface-container-highest px-sm py-xs rounded-full">
+            DL: 12345/IN
+        </div>
+</header>
+<main class="w-full max-w-2xl mx-auto flex flex-col gap-lg mt-sm px-md pb-xl">
+<!-- Hero Strip: Total Payable -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col gap-xs relative overflow-hidden">
+<div class="absolute right-0 top-0 w-32 h-32 bg-error opacity-5 rounded-bl-[100px]"></div>
+<h2 class="text-body-lg font-body-lg text-on-surface-variant">Total dena hai</h2>
+<div class="text-display-currency font-display-currency text-error">₹47,300</div>
+<div class="text-label-hinglish font-label-hinglish text-on-surface-variant mt-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                Is hafte: ₹18,400
+            </div>
+</section>
+<!-- Payment Calendar Strip -->
+<section>
+<h3 class="text-label-hinglish font-label-hinglish text-on-surface-variant mb-sm">Payment Calendar</h3>
+<div class="flex overflow-x-auto no-scrollbar gap-sm pb-xs -mx-md px-md">
+<!-- Days -->
+<div class="flex-shrink-0 flex flex-col items-center justify-center bg-surface-container border border-outline-variant rounded-lg w-16 h-20">
+<span class="text-label-hinglish font-label-hinglish text-on-surface-variant">Mon</span>
+<span class="text-body-md font-body-md text-on-surface">12</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center justify-center bg-surface-container-lowest border border-error rounded-lg w-16 h-20 relative">
+<div class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></div>
+<span class="text-label-hinglish font-label-hinglish text-error">Tue</span>
+<span class="text-body-md font-body-md text-on-surface font-bold">13</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center justify-center bg-surface-container-lowest border border-error rounded-lg w-16 h-20 relative">
+<div class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></div>
+<span class="text-label-hinglish font-label-hinglish text-error">Wed</span>
+<span class="text-body-md font-body-md text-on-surface font-bold">14</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center justify-center bg-surface-container border border-outline-variant rounded-lg w-16 h-20">
+<span class="text-label-hinglish font-label-hinglish text-on-surface-variant">Thu</span>
+<span class="text-body-md font-body-md text-on-surface">15</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center justify-center bg-surface-container border border-outline-variant rounded-lg w-16 h-20">
+<span class="text-label-hinglish font-label-hinglish text-on-surface-variant">Fri</span>
+<span class="text-body-md font-body-md text-on-surface">16</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center justify-center bg-surface-container border border-outline-variant rounded-lg w-16 h-20">
+<span class="text-label-hinglish font-label-hinglish text-on-surface-variant">Sat</span>
+<span class="text-body-md font-body-md text-on-surface">17</span>
+</div>
+</div>
+</section>
+<!-- Supplier List -->
+<section class="flex flex-col gap-sm">
+<h3 class="text-label-hinglish font-label-hinglish text-on-surface-variant mb-xs">Suppliers</h3>
+<!-- Overdue Supplier Card -->
+<div class="bg-surface-container-lowest border-2 border-error rounded-xl p-md flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-xs">
+<h4 class="text-headline-md font-headline-md text-on-surface">Cipla Distributors</h4>
+<span class="bg-error-container text-on-error-container text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Overdue 3 din</span>
+</div>
+<div class="text-body-md font-body-md text-on-surface-variant mt-xs">Inv #CP-9921</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined">call</span>
+</button>
+</div>
+<div class="flex justify-between items-end mt-xs">
+<div>
+<div class="text-label-hinglish font-label-hinglish text-on-surface-variant">Outstanding</div>
+<div class="text-headline-lg-mobile font-headline-lg-mobile text-error">₹12,500</div>
+</div>
+</div>
+<div class="flex gap-sm mt-xs">
+<button class="flex-1 bg-primary text-on-primary rounded-full py-sm text-label-hinglish font-label-hinglish active:scale-95 transition-transform">
+                        Payment karo
+                    </button>
+<button class="flex-1 border border-outline text-primary rounded-full py-sm text-label-hinglish font-label-hinglish active:scale-95 transition-transform">
+                        Ledger
+                    </button>
+</div>
+</div>
+<!-- Normal Supplier Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-headline-md font-headline-md text-on-surface">Sun Pharma Depot</h4>
+<div class="text-body-md font-body-md text-on-surface-variant mt-xs">Inv #SP-4410</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined">call</span>
+</button>
+</div>
+<div class="flex justify-between items-end mt-xs">
+<div>
+<div class="text-label-hinglish font-label-hinglish text-on-surface-variant">Outstanding</div>
+<div class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">₹8,200</div>
+</div>
+<div class="bg-surface-container px-sm py-xs rounded-lg text-label-hinglish font-label-hinglish text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">event</span> Due Tomorrow
+                    </div>
+</div>
+<div class="flex gap-sm mt-xs">
+<button class="flex-1 bg-primary text-on-primary rounded-full py-sm text-label-hinglish font-label-hinglish active:scale-95 transition-transform">
+                        Payment karo
+                    </button>
+<button class="flex-1 border border-outline text-primary rounded-full py-sm text-label-hinglish font-label-hinglish active:scale-95 transition-transform">
+                        Ledger
+                    </button>
+</div>
+</div>
+<!-- Normal Supplier Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-headline-md font-headline-md text-on-surface">Mankind Agency</h4>
+<div class="text-body-md font-body-md text-on-surface-variant mt-xs">Inv #MK-1022</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined">call</span>
+</button>
+</div>
+<div class="flex justify-between items-end mt-xs">
+<div>
+<div class="text-label-hinglish font-label-hinglish text-on-surface-variant">Outstanding</div>
+<div class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">₹26,600</div>
+</div>
+<div class="bg-surface-container px-sm py-xs rounded-lg text-label-hinglish font-label-hinglish text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">event</span> Due 16th
+                    </div>
+</div>
+<div class="flex gap-sm mt-xs">
+<button class="flex-1 bg-primary text-on-primary rounded-full py-sm text-label-hinglish font-label-hinglish active:scale-95 transition-transform">
+                        Payment karo
+                    </button>
+<button class="flex-1 border border-outline text-primary rounded-full py-sm text-label-hinglish font-label-hinglish active:scale-95 transition-transform">
+                        Ledger
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Buttons -->
+<div class="fixed bottom-24 right-4 flex flex-col gap-sm z-40 items-end">
+<!-- Add Supplier FAB -->
+<button class="w-14 h-14 bg-surface-container border border-outline-variant rounded-2xl flex items-center justify-center text-primary shadow-sm hover:opacity-80 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[28px]">person_add</span>
+</button>
+<!-- Mic FAB -->
+<button class="w-16 h-16 bg-surface-tint text-on-primary rounded-full flex items-center justify-center pulse-mic shadow-sm hover:opacity-80 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[32px]">mic</span>
+</button>
+</div>
+<!-- BottomNavBar from JSON -->
+<!-- Active state applied to "Khata" as it relates to ledgers/payments -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe-bottom pt-sm bg-surface-container dark:bg-surface-container-highest shadow-sm">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline scale-98 active:scale-95 transition-all hover:bg-surface-container-high rounded-xl p-2 w-16">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-hinglish font-label-hinglish mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline scale-98 active:scale-95 transition-all hover:bg-surface-container-high rounded-xl p-2 w-16">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-hinglish font-label-hinglish mt-1">Billing</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline scale-98 active:scale-95 transition-all hover:bg-surface-container-high rounded-xl p-2 w-16">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-hinglish font-label-hinglish mt-1">Stock</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold scale-98 active:scale-95 transition-all hover:bg-surface-container-high rounded-xl p-2 w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="text-label-hinglish font-label-hinglish mt-1">Khata</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline scale-98 active:scale-95 transition-all hover:bg-surface-container-high rounded-xl p-2 w-16">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-hinglish font-label-hinglish mt-1">More</span>
+</button>
+</nav>
+</body></html>

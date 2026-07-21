@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Purchase Order</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#008373",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#63dac5",
+                        "surface-container-low": "#eff4ff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary-fixed-variant": "#005320",
+                        "background": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-surface-variant": "#3d4946",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#bcc9c5",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#a36700",
+                        "on-primary-fixed": "#00201b",
+                        "primary": "#00685b",
+                        "secondary-container": "#7cf994",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container": "#e5eeff",
+                        "inverse-surface": "#213145",
+                        "outline": "#6d7a76",
+                        "on-background": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#002109",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "tertiary": "#825100",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-container": "#fffbff",
+                        "surface": "#f8f9ff",
+                        "on-primary-container": "#f4fffb",
+                        "primary-fixed": "#81f6e0",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#007230",
+                        "secondary-fixed-dim": "#62df7d",
+                        "primary-fixed-dim": "#63dac5",
+                        "secondary": "#006e2d",
+                        "surface-variant": "#d3e4fe",
+                        "surface-tint": "#006b5d",
+                        "secondary-fixed": "#7ffc97",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed-variant": "#005046"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "safe-bottom": "80px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-hinglish": ["Inter"],
+                        "display-currency": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["22px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "label-hinglish": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- Top App Bar -->
+<header class="docked full-width top-0 bg-surface border-b border-outline-variant flat no shadows flex justify-between items-center px-md py-sm w-full sticky z-40">
+<div class="flex items-center gap-xs">
+<button class="text-on-surface-variant hover:bg-surface-container transition-colors p-xs rounded-full scale-95 active:scale-90 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Purchase Order</h1>
+<div class="flex items-center text-on-surface-variant font-label-hinglish text-label-hinglish">
+<span>Cipla Distributors</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container transition-colors p-xs rounded-full scale-95 active:scale-90 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto pb-[160px] md:pb-safe-bottom">
+<!-- Summary Section -->
+<div class="px-md py-md bg-surface-container-lowest border-b border-outline-variant/30">
+<div class="flex justify-between items-center">
+<div class="font-body-md text-body-md text-on-surface-variant">
+<span class="font-bold text-on-background">24 items suggest kiye</span>
+<br/>
+<span>₹32,400 ka order</span>
+</div>
+<div class="bg-primary-container/10 text-primary px-3 py-1 rounded-full font-label-hinglish text-label-hinglish">
+                    Draft
+                </div>
+</div>
+</div>
+<!-- Filter Tabs -->
+<div class="px-md py-sm overflow-x-auto no-scrollbar border-b border-outline-variant/30">
+<div class="flex gap-sm w-max">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-hinglish text-label-hinglish scale-98 active:scale-95 transition-transform">
+                    Auto-suggested
+                </button>
+<button class="bg-surface-container border border-outline-variant/50 text-on-surface-variant px-4 py-2 rounded-full font-label-hinglish text-label-hinglish scale-98 active:scale-95 transition-transform hover:bg-surface-container-high">
+                    Low stock
+                </button>
+<button class="bg-surface-container border border-outline-variant/50 text-on-surface-variant px-4 py-2 rounded-full font-label-hinglish text-label-hinglish scale-98 active:scale-95 transition-transform hover:bg-surface-container-high">
+                    Missed sales
+                </button>
+<button class="bg-surface-container border border-outline-variant/50 text-on-surface-variant px-4 py-2 rounded-full font-label-hinglish text-label-hinglish scale-98 active:scale-95 transition-transform hover:bg-surface-container-high">
+                    Fast movers
+                </button>
+</div>
+</div>
+<!-- Order List -->
+<div class="p-md flex flex-col gap-sm">
+<!-- Item Card 1 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant/50 flex items-start gap-md">
+<div class="pt-1">
+<input checked="" class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-body-lg text-body-lg font-bold text-on-background">Augmentin 625 Duo Tablet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Amoxicillin (500mg) + Clavulanic Acid (125mg)</p>
+</div>
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded text-xs font-bold whitespace-nowrap">2 strip left</span>
+</div>
+<div class="flex justify-between items-end mt-2">
+<div class="font-label-hinglish text-label-hinglish text-on-surface-variant">
+                            Stock: 2 | Pack: 10
+                        </div>
+<div class="flex items-center gap-2 bg-surface-container rounded-lg p-1 border border-outline-variant/30">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded scale-98 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-body-lg text-body-lg font-bold w-6 text-center">10</span>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded scale-98 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant/50 flex items-start gap-md">
+<div class="pt-1">
+<input checked="" class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-body-lg text-body-lg font-bold text-on-background">Dolo 650 Tablet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Paracetamol (650mg)</p>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-xs font-bold whitespace-nowrap">Fast Mover</span>
+</div>
+<div class="flex justify-between items-end mt-2">
+<div class="font-label-hinglish text-label-hinglish text-on-surface-variant">
+                            Stock: 15 | Pack: 15
+                        </div>
+<div class="flex items-center gap-2 bg-surface-container rounded-lg p-1 border border-outline-variant/30">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded scale-98 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-body-lg text-body-lg font-bold w-6 text-center">50</span>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high rounded scale-98 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant/50 flex items-start gap-md opacity-60">
+<div class="pt-1">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="flex-1 flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-body-lg text-body-lg font-bold text-on-background">Pan 40 Tablet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Pantoprazole (40mg)</p>
+</div>
+<span class="bg-surface-dim text-on-surface px-2 py-0.5 rounded text-xs font-bold whitespace-nowrap">Ok Stock</span>
+</div>
+<div class="flex justify-between items-end mt-2">
+<div class="font-label-hinglish text-label-hinglish text-on-surface-variant">
+                            Stock: 40 | Pack: 15
+                        </div>
+<div class="flex items-center gap-2 bg-surface-container rounded-lg p-1 border border-outline-variant/30">
+<button class="w-8 h-8 flex items-center justify-center text-outline hover:bg-surface-container-high rounded scale-98 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-body-lg text-body-lg font-bold w-6 text-center text-outline">0</span>
+<button class="w-8 h-8 flex items-center justify-center text-outline hover:bg-surface-container-high rounded scale-98 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom Action Area -->
+<div class="fixed bottom-20 w-full bg-surface-container-lowest border-t border-outline-variant/30 p-md flex flex-col gap-sm shadow-[0_-4px_12px_rgba(0,0,0,0.05)] z-40 md:bottom-0">
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-md text-body-md text-on-surface-variant">24 Items Selected</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">~₹32,400</span>
+</div>
+<div class="flex gap-sm">
+<button class="flex-1 bg-surface-container-lowest border-2 border-outline text-on-surface py-3 rounded-lg font-label-hinglish text-label-hinglish scale-98 active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+                PDF banao
+            </button>
+<button class="flex-1 bg-secondary text-on-secondary py-3 rounded-lg font-label-hinglish text-label-hinglish scale-98 active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">send</span>
+                WhatsApp bhejo
+            </button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-sm py-xs bg-surface border-t border-outline-variant h-20 shadow-sm md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1 rounded-xl scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-hinglish text-label-hinglish text-[12px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1 rounded-xl scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-hinglish text-label-hinglish text-[12px] mt-1">Billing</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1 rounded-xl scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-hinglish text-label-hinglish text-[12px] mt-1">Stock</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-1 rounded-xl scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-hinglish text-label-hinglish text-[12px] mt-1">Khata</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container hover:bg-surface-container-high transition-colors px-4 py-1 rounded-xl scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-label-hinglish text-label-hinglish text-[12px] mt-1">More</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dolo 650 - Stock Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed-dim": "#63dac5",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#f4fffb",
+                        "secondary": "#006e2d",
+                        "surface-tint": "#006b5d",
+                        "on-surface": "#0b1c30",
+                        "tertiary-container": "#a36700",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "outline-variant": "#bcc9c5",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary-fixed": "#00201b",
+                        "on-secondary-container": "#007230",
+                        "primary": "#00685b",
+                        "primary-container": "#008373",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#81f6e0",
+                        "on-primary-fixed-variant": "#005046",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-surface-variant": "#3d4946",
+                        "tertiary": "#825100",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container": "#e5eeff",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed": "#002109",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#63dac5",
+                        "secondary-container": "#7cf994",
+                        "outline": "#6d7a76",
+                        "secondary-fixed": "#7ffc97",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-container": "#fffbff",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#62df7d",
+                        "on-secondary-fixed-variant": "#005320",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "background": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "safe-bottom": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-currency": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-hinglish": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["22px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-hinglish": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.15); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+        /* Hide scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:max-w-md md:mx-auto md:border-x md:border-outline-variant">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-surface-dim text-primary dark:text-primary-fixed w-full top-0 sticky z-40 flex items-center justify-between px-md py-sm shadow-sm md:hidden">
+<button class="text-on-surface-variant hover:opacity-80 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-md-mobile font-headline-md-mobile text-primary dark:text-primary-fixed flex-1 text-center truncate px-sm">Stock Details</h1>
+<button class="text-on-surface-variant hover:opacity-80 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto no-scrollbar pb-[180px] px-md pt-sm space-y-md">
+<!-- Header Card -->
+<section class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant">
+<div class="flex justify-between items-start mb-xs">
+<div>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">Dolo 650</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Paracetamol 650mg</p>
+</div>
+<span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Active</span>
+</div>
+<div class="text-label-hinglish font-label-hinglish text-outline mb-md">
+                Micro Labs • Pack: 1x15
+            </div>
+<div class="grid grid-cols-2 gap-sm text-sm text-on-surface-variant bg-surface-container rounded-lg p-sm">
+<div><span class="text-outline block text-xs">HSN Code</span> 30049099</div>
+<div><span class="text-outline block text-xs">GST</span> 12%</div>
+<div class="col-span-2 flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="shelves">shelves</span>
+<span class="font-medium text-on-surface">Rack 3 • Shelf B</span>
+</div>
+</div>
+</section>
+<!-- Stat Tiles -->
+<section class="grid grid-cols-3 gap-sm">
+<div class="bg-surface-container-lowest rounded-xl p-sm border border-outline-variant flex flex-col justify-center items-center text-center">
+<span class="text-outline text-xs block mb-1">Total Stock</span>
+<span class="text-headline-md-mobile font-headline-md-mobile text-on-surface">14</span>
+<span class="text-[10px] text-on-surface-variant uppercase">Strips</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-sm border border-outline-variant flex flex-col justify-center items-center text-center">
+<span class="text-outline text-xs block mb-1">Landed Cost</span>
+<span class="text-headline-md-mobile font-headline-md-mobile text-on-surface">₹24.5</span>
+<span class="text-[10px] text-on-surface-variant uppercase">Per Strip</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-sm border border-outline-variant flex flex-col justify-center items-center text-center">
+<span class="text-outline text-xs block mb-1">Margin</span>
+<span class="text-headline-md-mobile font-headline-md-mobile text-secondary">22%</span>
+<span class="text-[10px] text-secondary uppercase">Average</span>
+</div>
+</section>
+<!-- Batches Section -->
+<section>
+<div class="flex justify-between items-center mb-sm">
+<h3 class="text-headline-md-mobile font-headline-md-mobile text-on-surface">Batches</h3>
+<button class="text-primary text-sm font-medium hover:underline">Add New</button>
+</div>
+<div class="space-y-sm">
+<!-- Batch Card 1 (Good Expiry) -->
+<div class="bg-surface-container-lowest rounded-xl p-sm border border-outline-variant flex justify-between items-center scale-98 active:scale-95 transition-all">
+<div>
+<div class="font-label-hinglish text-label-hinglish text-on-surface mb-1">B: XA8921</div>
+<div class="flex items-center gap-xs text-xs">
+<span class="text-secondary-fixed-dim bg-secondary-container px-1 rounded font-medium">Exp: Oct 2025</span>
+<span class="text-outline">Qty: 10</span>
+</div>
+</div>
+<div class="text-right">
+<div class="text-label-hinglish font-label-hinglish text-on-surface">MRP ₹34</div>
+<div class="text-xs text-on-surface-variant">PR ₹24.50</div>
+</div>
+</div>
+<!-- Batch Card 2 (Near Expiry) -->
+<div class="bg-surface-container-lowest rounded-xl p-sm border border-outline-variant flex justify-between items-center scale-98 active:scale-95 transition-all">
+<div>
+<div class="font-label-hinglish text-label-hinglish text-on-surface mb-1">B: TR4450</div>
+<div class="flex items-center gap-xs text-xs">
+<span class="text-tertiary bg-tertiary-fixed px-1 rounded font-medium">Exp: May 2024</span>
+<span class="text-outline">Qty: 4</span>
+</div>
+</div>
+<div class="text-right">
+<div class="text-label-hinglish font-label-hinglish text-on-surface">MRP ₹32</div>
+<div class="text-xs text-on-surface-variant">PR ₹23.00</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Movement Section (Simplified) -->
+<section class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant">
+<h3 class="text-headline-md-mobile font-headline-md-mobile text-on-surface mb-sm">Stock Movement (30d)</h3>
+<div class="h-16 w-full flex items-end gap-1 mb-md">
+<!-- Mock Sparkline Bars -->
+<div class="bg-primary opacity-20 w-1/6 h-full rounded-t-sm"></div>
+<div class="bg-primary w-1/6 h-3/4 rounded-t-sm"></div>
+<div class="bg-primary opacity-40 w-1/6 h-1/2 rounded-t-sm"></div>
+<div class="bg-primary w-1/6 h-full rounded-t-sm"></div>
+<div class="bg-primary opacity-60 w-1/6 h-2/3 rounded-t-sm"></div>
+<div class="bg-primary opacity-30 w-1/6 h-1/3 rounded-t-sm"></div>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant pt-sm">
+<span class="text-sm text-on-surface-variant">Reorder Level</span>
+<div class="flex items-center bg-surface-container rounded-lg">
+<button class="p-2 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[20px]" data-icon="remove">remove</span></button>
+<span class="px-2 font-medium w-8 text-center">5</span>
+<button class="p-2 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[20px]" data-icon="add">add</span></button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar (Contextual to Item) -->
+<div class="fixed bottom-[72px] md:bottom-[72px] left-0 w-full md:max-w-md md:left-1/2 md:-translate-x-1/2 px-md py-sm bg-surface/90 backdrop-blur-sm border-t border-outline-variant z-40 flex gap-sm">
+<button class="flex-1 py-sm border-2 border-primary text-primary font-label-hinglish text-label-hinglish rounded-lg hover:bg-primary-container/10 active:scale-98 transition-all">
+            PO Banao
+        </button>
+<button class="flex-1 py-sm bg-primary text-on-primary font-label-hinglish text-label-hinglish rounded-lg shadow-sm hover:opacity-90 active:scale-98 transition-all">
+            Bill Mein Daalo
+        </button>
+</div>
+<!-- Voice Mic FAB -->
+<button class="fixed bottom-[96px] right-lg md:right-[calc(50%-180px)] w-16 h-16 bg-primary text-on-primary rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.15)] flex items-center justify-center z-50 group hover:opacity-95 transition-all">
+<div class="absolute inset-0 bg-primary rounded-full pulse-ring z-0"></div>
+<span class="material-symbols-outlined text-[28px] z-10" data-icon="mic" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<!-- Bottom Navigation Shell -->
+<nav class="bg-surface-container dark:bg-surface-container-highest fixed bottom-0 left-0 w-full md:max-w-md md:left-1/2 md:-translate-x-1/2 z-50 flex justify-around items-center px-sm pb-safe-bottom md:pb-2 pt-2 shadow-[0_-1px_3px_rgba(0,0,0,0.05)] border-t border-outline-variant/30">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-high scale-98 active:scale-95 transition-all w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="text-[10px] font-medium tracking-wide">Home</span>
+</a>
+<!-- Billing -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-high scale-98 active:scale-95 transition-all w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="receipt_long">receipt_long</span>
+<span class="text-[10px] font-medium tracking-wide">Billing</span>
+</a>
+<!-- Stock (Active context fallback for viewing item details) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold bg-primary-container/10 scale-98 active:scale-95 transition-all w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="inventory_2" data-weight="fill" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="text-[10px] font-bold tracking-wide">Stock</span>
+</a>
+<!-- Khata -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-high scale-98 active:scale-95 transition-all w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+<span class="text-[10px] font-medium tracking-wide">Khata</span>
+</a>
+<!-- More -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-high scale-98 active:scale-95 transition-all w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="more_horiz">more_horiz</span>
+<span class="text-[10px] font-medium tracking-wide">More</span>
+</a>
+</nav>
+</body></html>

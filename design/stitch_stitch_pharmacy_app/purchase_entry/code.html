@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Purchase Entry - Items</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with specific configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed-dim": "#63dac5",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#f4fffb",
+                        "secondary": "#006e2d",
+                        "surface-tint": "#006b5d",
+                        "on-surface": "#0b1c30",
+                        "tertiary-container": "#a36700",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "outline-variant": "#bcc9c5",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary-fixed": "#00201b",
+                        "on-secondary-container": "#007230",
+                        "primary": "#00685b",
+                        "primary-container": "#008373",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#81f6e0",
+                        "on-primary-fixed-variant": "#005046",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-surface-variant": "#3d4946",
+                        "tertiary": "#825100",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container": "#e5eeff",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed": "#002109",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#63dac5",
+                        "secondary-container": "#7cf994",
+                        "outline": "#6d7a76",
+                        "secondary-fixed": "#7ffc97",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-container": "#fffbff",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#62df7d",
+                        "on-secondary-fixed-variant": "#005320",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "background": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "safe-bottom": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-currency": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-hinglish": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["22px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-hinglish": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Hide scrollbar for cleaner UI */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface flex items-center justify-between px-md py-sm z-40 flat no shadows">
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+<h1 class="text-headline-md-mobile font-headline-md-mobile">Sharma Medical Store</h1>
+</div>
+<div class="text-label-hinglish font-label-hinglish text-primary">DL: 12345/IN</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow px-md py-sm flex flex-col gap-lg pb-[280px]"> <!-- Large bottom padding to clear sticky footer & nav -->
+<!-- Step Indicator -->
+<div class="flex items-center justify-between font-label-hinglish text-label-hinglish px-xs">
+<div class="flex items-center gap-xs text-on-surface-variant text-sm">
+<span class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center">1</span> 
+                Supplier
+            </div>
+<div class="flex-1 h-px bg-outline-variant mx-sm opacity-50"></div>
+<div class="flex items-center gap-xs text-primary font-bold text-sm">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">2</span> 
+                Items
+            </div>
+<div class="flex-1 h-px bg-outline-variant mx-sm opacity-50"></div>
+<div class="flex items-center gap-xs text-on-surface-variant text-sm">
+<span class="w-6 h-6 rounded-full border border-outline-variant flex items-center justify-center">3</span> 
+                Confirm
+            </div>
+</div>
+<!-- Supplier Info Chip -->
+<div class="flex justify-center">
+<div class="bg-surface-container-high text-on-surface px-md py-xs rounded-full font-label-hinglish text-label-hinglish text-xs flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">local_shipping</span>
+                Cipla Distributors · Invoice #4821 · Due 30 din
+            </div>
+</div>
+<!-- Voice Entry Banner -->
+<div class="bg-primary-container text-on-primary-container p-md rounded-xl flex items-center gap-md shadow-sm relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent pointer-events-none"></div>
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary shrink-0 relative shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+<div class="absolute inset-0 rounded-full border-[3px] border-primary animate-ping opacity-20"></div>
+</div>
+<div class="z-10">
+<h3 class="font-label-hinglish text-label-hinglish font-bold mb-[2px]">Bolke entry karo</h3>
+<p class="font-body-md text-body-md text-[13px] opacity-90 leading-tight">Batch, expiry, qty bol do — main bhar dunga</p>
+</div>
+</div>
+<!-- Item Rows -->
+<div class="flex flex-col gap-sm">
+<!-- Item Card 1 (Augmentin) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col gap-sm shadow-sm scale-98 active:scale-95 transition-transform">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-hinglish text-label-hinglish font-bold text-on-surface text-[16px]">Augmentin 625 Duo</h4>
+<p class="font-body-md text-body-md text-[12px] text-on-surface-variant mt-1">Strip of 10 Tablets</p>
+</div>
+<button class="text-outline hover:text-error p-xs rounded-full hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-y-sm gap-x-md mt-xs">
+<div class="flex flex-col">
+<span class="text-[11px] text-on-surface-variant font-medium uppercase tracking-wide">Batch</span>
+<span class="font-label-hinglish text-label-hinglish text-on-surface">B23X99</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[11px] text-on-surface-variant font-medium uppercase tracking-wide">Expiry</span>
+<span class="font-label-hinglish text-label-hinglish text-error font-bold bg-error-container/30 w-fit px-1 rounded">12/24</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[11px] text-on-surface-variant font-medium uppercase tracking-wide">Qty (Free)</span>
+<span class="font-label-hinglish text-label-hinglish text-on-surface">10 <span class="text-secondary bg-secondary-container/30 px-1 rounded text-[12px]">+1 free</span></span>
+</div>
+<div class="flex flex-col">
+<span class="text-[11px] text-on-surface-variant font-medium uppercase tracking-wide">Rate / MRP</span>
+<span class="font-label-hinglish text-label-hinglish text-on-surface">₹142.50 / ₹170</span>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 pt-sm mt-xs flex justify-between items-center bg-surface-bright -mx-md -mb-md px-md py-sm rounded-b-xl">
+<div class="flex flex-col">
+<span class="text-[11px] text-on-surface-variant font-medium">Landed Cost</span>
+<span class="font-label-hinglish text-label-hinglish text-primary font-bold text-[15px]">₹129.54</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[11px] text-on-surface-variant font-medium">Margin</span>
+<span class="font-label-hinglish text-label-hinglish text-secondary font-bold text-[15px]">23.8%</span>
+</div>
+</div>
+</div>
+<!-- Add Item Inline Form (Glassmorphic inspiration within limits) -->
+<div class="bg-surface-container-low border-2 border-primary-fixed-dim/60 rounded-xl p-sm mt-xs shadow-sm relative">
+<div class="absolute inset-0 bg-primary/5 rounded-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-sm">
+<!-- Search Field -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-[40px] pr-[44px] py-xs font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none shadow-sm placeholder:text-on-surface-variant/60" placeholder="Search medicine..." type="text"/>
+<button class="absolute right-xs top-1/2 -translate-y-1/2 text-primary p-xs bg-primary-container rounded-md flex items-center justify-center w-8 h-8">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+<!-- Inline Inputs Grid -->
+<div class="grid grid-cols-4 gap-xs">
+<div class="col-span-1">
+<label class="text-[10px] uppercase text-on-surface-variant font-bold block mb-[2px] ml-1">Batch</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-md px-2 py-1 font-label-hinglish text-label-hinglish focus:border-primary outline-none shadow-sm text-center" placeholder="BNo." type="text"/>
+</div>
+<div class="col-span-1">
+<label class="text-[10px] uppercase text-on-surface-variant font-bold block mb-[2px] ml-1">Exp</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-md px-2 py-1 font-label-hinglish text-label-hinglish focus:border-primary outline-none shadow-sm text-center" placeholder="MM/YY" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="text-[10px] uppercase text-on-surface-variant font-bold block mb-[2px] ml-1">Qty</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-md px-2 py-1 font-label-hinglish text-label-hinglish focus:border-primary outline-none shadow-sm text-center" placeholder="0" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="text-[10px] uppercase text-on-surface-variant font-bold block mb-[2px] ml-1">Rate(₹)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-md px-2 py-1 font-label-hinglish text-label-hinglish focus:border-primary outline-none shadow-sm text-center" placeholder="0.00" type="number"/>
+</div>
+</div>
+<button class="w-full bg-surface-container text-primary rounded-lg py-sm font-label-hinglish text-label-hinglish font-bold flex items-center justify-center gap-xs mt-1 border border-primary/20 hover:bg-primary-container transition-colors active:scale-98">
+<span class="material-symbols-outlined text-[20px]">add_circle</span> Add Item
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Voice Mic) -->
+<!-- Positioned above footer to avoid clashing with primary action -->
+<button class="fixed bottom-[230px] right-md w-[64px] h-[64px] bg-primary text-on-primary rounded-full shadow-[0_8px_24px_rgba(0,104,91,0.4)] flex items-center justify-center z-50 active:scale-90 transition-transform hover:bg-primary-container hover:text-on-primary-container">
+<div class="absolute inset-0 rounded-full border-2 border-primary animate-ping opacity-40"></div>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 32px;">mic</span>
+</button>
+<!-- Sticky Footer (Totals & Action) -->
+<div class="fixed bottom-[80px] left-0 w-full bg-surface-container-lowest border-t border-outline-variant/30 shadow-[0_-8px_24px_rgba(0,0,0,0.06)] z-40 rounded-t-2xl pb-sm">
+<div class="px-md pt-md pb-xs flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-[12px] text-on-surface-variant flex items-center gap-1 font-medium">
+                        2 Items · GST: ₹450 
+                        <span class="material-symbols-outlined text-[14px]">info</span>
+</span>
+<span class="font-label-hinglish text-label-hinglish text-on-surface font-bold mt-1">Invoice Total</span>
+</div>
+<div class="font-display-currency text-display-currency text-primary tracking-tight">₹12,450</div>
+</div>
+<button class="w-full bg-primary text-on-primary rounded-xl py-sm font-headline-md-mobile text-headline-md-mobile flex items-center justify-center gap-sm shadow-sm active:scale-98 transition-transform hover:opacity-90 mt-1">
+                Save Purchase 
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe-bottom bg-surface-container shadow-[0_-2px_10px_rgba(0,0,0,0.02)] h-[80px] pt-xs">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-98 active:scale-95 transition-all w-16 h-14 rounded-lg">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-hinglish font-label-hinglish text-[11px] mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-98 active:scale-95 transition-all w-16 h-14 rounded-lg">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-hinglish font-label-hinglish text-[11px] mt-1">Billing</span>
+</button>
+<!-- ACTIVE TAB: Stock -->
+<button class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-container-high scale-98 active:scale-95 transition-all w-16 h-14 rounded-lg bg-surface-container-high">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="text-label-hinglish font-label-hinglish text-[11px] mt-1">Stock</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-98 active:scale-95 transition-all w-16 h-14 rounded-lg">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-label-hinglish font-label-hinglish text-[11px] mt-1">Khata</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-98 active:scale-95 transition-all w-16 h-14 rounded-lg">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-hinglish font-label-hinglish text-[11px] mt-1">More</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Home Dashboard - Sharma Medical Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#7cf994",
+                        "secondary-fixed-dim": "#62df7d",
+                        "surface-container-low": "#eff4ff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#00201b",
+                        "inverse-surface": "#213145",
+                        "surface-container": "#e5eeff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary": "#006e2d",
+                        "error-container": "#ffdad6",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "on-surface": "#0b1c30",
+                        "outline": "#6d7a76",
+                        "on-secondary-fixed-variant": "#005320",
+                        "surface": "#f8f9ff",
+                        "on-primary-container": "#f4fffb",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#008373",
+                        "inverse-primary": "#63dac5",
+                        "on-secondary-container": "#007230",
+                        "primary": "#00685b",
+                        "on-surface-variant": "#3d4946",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary": "#825100",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "primary-fixed": "#81f6e0",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-fixed": "#7ffc97",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary-container": "#a36700",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-secondary-fixed": "#002109",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#005046",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#006b5d",
+                        "surface-variant": "#d3e4fe",
+                        "outline-variant": "#bcc9c5",
+                        "primary-fixed-dim": "#63dac5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "sm": "12px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "safe-bottom": "80px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-currency": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-hinglish": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+                        "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-hinglish": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["22px", { "lineHeight": "30px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pulse-ring {
+            animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 104, 91, 0.4); }
+            100% { box-shadow: 0 0 0 16px rgba(0, 104, 91, 0); }
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased pb-safe-bottom">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 bg-surface border-b border-outline-variant flat no shadows">
+<div class="flex justify-between items-center px-md py-sm w-full">
+<div class="flex items-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-[28px]">storefront</span>
+<div class="flex flex-col">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Sharma Medical Store</h1>
+<span class="font-label-hinglish text-label-hinglish text-on-surface-variant">License: 20B/21B-4567</span>
+</div>
+</div>
+<button aria-label="Notifications" class="relative p-xs rounded-full hover:bg-surface-container transition-colors scale-95 active:scale-90 transition-transform">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-[28px]">notifications</span>
+<span class="absolute top-2 right-2 flex h-2.5 w-2.5 rounded-full bg-error"></span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="px-md py-lg space-y-lg pb-32">
+<!-- Hero Card: Aaj ki Sale -->
+<section class="bg-white rounded-xl border border-surface-container-high p-lg shadow-sm">
+<div class="flex justify-between items-start mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Aaj ki Sale</h2>
+<span aria-hidden="true" class="material-symbols-outlined text-outline-variant">trending_up</span>
+</div>
+<div class="mb-md">
+<p class="font-display-currency text-display-currency text-primary">₹18,240</p>
+</div>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-base bg-surface-container rounded-full font-label-hinglish text-label-hinglish text-on-surface-variant flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Cash ₹9,100
+                </span>
+<span class="px-sm py-base bg-surface-container rounded-full font-label-hinglish text-label-hinglish text-on-surface-variant flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    UPI ₹6,340
+                </span>
+<span class="px-sm py-base bg-error-container rounded-full font-label-hinglish text-label-hinglish text-on-error-container flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                    Udhaar ₹2,800
+                </span>
+</div>
+</section>
+<!-- Alert Cards (Scrollable) -->
+<section class="flex overflow-x-auto hide-scrollbar gap-sm snap-x">
+<div class="snap-start shrink-0 w-72 bg-[#fff8e1] border border-[#ffecb3] rounded-xl p-md flex flex-col justify-between">
+<div class="flex items-start gap-sm mb-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-tertiary-container">warning</span>
+<p class="font-body-md text-body-md text-tertiary-container font-medium">12 dawai 60 din mein expire</p>
+</div>
+<button class="self-end font-label-hinglish text-label-hinglish text-tertiary-container font-bold hover:underline">Dekho</button>
+</div>
+<div class="snap-start shrink-0 w-72 bg-error-container border border-[#ffb4ab] rounded-xl p-md flex flex-col justify-between">
+<div class="flex items-start gap-sm mb-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-on-error-container">payment</span>
+<p class="font-body-md text-body-md text-on-error-container font-medium">₹47,300 supplier ko dena hai (3 bill)</p>
+</div>
+<button class="self-end font-label-hinglish text-label-hinglish text-on-error-container font-bold hover:underline">Dekho</button>
+</div>
+</section>
+<!-- Quick Actions 2x2 Grid -->
+<section class="grid grid-cols-2 gap-sm">
+<button class="bg-white border border-surface-container-high rounded-xl p-md flex flex-col items-center justify-center gap-sm active:scale-98 transition-transform shadow-sm">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span aria-hidden="true" class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface text-center">Naya Bill</span>
+</button>
+<button class="bg-white border border-surface-container-high rounded-xl p-md flex flex-col items-center justify-center gap-sm active:scale-98 transition-transform shadow-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-primary flex items-center justify-center">
+<span aria-hidden="true" class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">inventory</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface text-center">Purchase Entry</span>
+</button>
+<button class="bg-white border border-surface-container-high rounded-xl p-md flex flex-col items-center justify-center gap-sm active:scale-98 transition-transform shadow-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-primary flex items-center justify-center">
+<span aria-hidden="true" class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface text-center">Khata / Udhaar</span>
+</button>
+<button class="bg-white border border-surface-container-high rounded-xl p-md flex flex-col items-center justify-center gap-sm active:scale-98 transition-transform shadow-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-primary flex items-center justify-center">
+<span aria-hidden="true" class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface text-center">Stock Check</span>
+</button>
+</section>
+<!-- Kam Stock Section -->
+<section class="bg-white rounded-xl border border-surface-container-high p-md shadow-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm flex items-center gap-xs">
+<span aria-hidden="true" class="material-symbols-outlined text-error">inventory_2</span>
+                Kam stock
+            </h3>
+<ul class="divide-y divide-surface-container-high">
+<li class="py-sm flex justify-between items-center">
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface">Dolo 650</span>
+<span class="font-body-md text-body-md text-outline">Paracetamol 650mg</span>
+<span class="font-label-hinglish text-label-hinglish text-error mt-1">2 strip left</span>
+</div>
+<button class="px-sm py-xs border border-primary text-primary rounded-lg font-label-hinglish text-label-hinglish active:bg-surface-container transition-colors">
+                        + PO
+                    </button>
+</li>
+<li class="py-sm flex justify-between items-center">
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface">Augmentin 625</span>
+<span class="font-body-md text-body-md text-outline">Amoxicillin &amp; Clavulanate</span>
+<span class="font-label-hinglish text-label-hinglish text-error mt-1">1 box left</span>
+</div>
+<button class="px-sm py-xs border border-primary text-primary rounded-lg font-label-hinglish text-label-hinglish active:bg-surface-container transition-colors">
+                        + PO
+                    </button>
+</li>
+<li class="py-sm flex justify-between items-center">
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface">Telma 40</span>
+<span class="font-body-md text-body-md text-outline">Telmisartan 40mg</span>
+<span class="font-label-hinglish text-label-hinglish text-error mt-1">5 strip left</span>
+</div>
+<button class="px-sm py-xs border border-primary text-primary rounded-lg font-label-hinglish text-label-hinglish active:bg-surface-container transition-colors">
+                        + PO
+                    </button>
+</li>
+</ul>
+</section>
+</main>
+<!-- Floating Action Button (Voice Mic) -->
+<button aria-label="Voice Command" class="fixed bottom-28 right-md w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg pulse-ring active:scale-95 transition-transform z-40">
+<span aria-hidden="true" class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-sm py-xs bg-surface h-20 border-t border-outline-variant shadow-sm md:hidden">
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1 scale-98 active:scale-95 transition-transform">
+<span aria-hidden="true" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-hinglish text-label-hinglish mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95 transition-transform">
+<span aria-hidden="true" class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-hinglish text-label-hinglish mt-1">Billing</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95 transition-transform">
+<span aria-hidden="true" class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-hinglish text-label-hinglish mt-1">Stock</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95 transition-transform">
+<span aria-hidden="true" class="material-symbols-outlined">menu_book</span>
+<span class="font-label-hinglish text-label-hinglish mt-1">Khata</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95 transition-transform">
+<span aria-hidden="true" class="material-symbols-outlined">more_horiz</span>
+<span class="font-label-hinglish text-label-hinglish mt-1">More</span>
+</button>
+</nav>
+</body></html>

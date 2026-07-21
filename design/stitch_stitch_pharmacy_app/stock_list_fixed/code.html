@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Stock List - Sharma Medical Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#7cf994",
+                      "secondary-fixed-dim": "#62df7d",
+                      "surface-container-low": "#eff4ff",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed": "#00201b",
+                      "inverse-surface": "#213145",
+                      "surface-container": "#e5eeff",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "secondary": "#006e2d",
+                      "error-container": "#ffdad6",
+                      "on-background": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "on-surface": "#0b1c30",
+                      "outline": "#6d7a76",
+                      "on-secondary-fixed-variant": "#005320",
+                      "surface": "#f8f9ff",
+                      "on-primary-container": "#f4fffb",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#f8f9ff",
+                      "primary-container": "#008373",
+                      "inverse-primary": "#63dac5",
+                      "on-secondary-container": "#007230",
+                      "primary": "#00685b",
+                      "on-surface-variant": "#3d4946",
+                      "inverse-on-surface": "#eaf1ff",
+                      "tertiary": "#825100",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "primary-fixed": "#81f6e0",
+                      "on-tertiary-container": "#fffbff",
+                      "secondary-fixed": "#7ffc97",
+                      "surface-dim": "#cbdbf5",
+                      "tertiary-container": "#a36700",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#2a1700",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "on-secondary-fixed": "#002109",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#005046",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#006b5d",
+                      "surface-variant": "#d3e4fe",
+                      "outline-variant": "#bcc9c5",
+                      "primary-fixed-dim": "#63dac5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "md": "16px",
+                      "sm": "12px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "safe-bottom": "80px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-currency": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-hinglish": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-currency": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-hinglish": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "22px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .pulse-animation {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 131, 115, 0.4); }
+            70% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 0 10px rgba(0, 131, 115, 0); }
+            100% { transform: scale(1); opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 131, 115, 0); }
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased md:hidden overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="docked full-width top-0 bg-surface dark:bg-background border-b border-outline-variant flat no shadows flex justify-between items-center px-md py-sm w-full sticky z-40">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="storefront">storefront</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">Sharma Medical Store</h1>
+</div>
+<button class="scale-95 active:scale-90 transition-transform hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pb-safe-bottom">
+<!-- Search & Filter Area (Sticky just below header) -->
+<div class="sticky top-[64px] bg-background z-30 pt-sm pb-xs px-md space-y-sm">
+<!-- Search Bar -->
+<div class="relative w-full h-[56px] bg-surface-container-lowest border border-outline-variant rounded-xl flex items-center px-sm shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant mr-xs">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-on-surface placeholder:text-on-surface-variant outline-none" placeholder="Search Medicine..." type="text"/>
+<button class="p-2 ml-xs">
+<span class="material-symbols-outlined text-primary">mic</span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-1"></div>
+<button class="p-2">
+<span class="material-symbols-outlined text-primary">barcode_scanner</span>
+</button>
+</div>
+<!-- Filter Chips -->
+<div class="flex overflow-x-auto gap-xs pb-1 no-scrollbar -mx-md px-md">
+<button class="shrink-0 px-4 py-2 bg-primary-container text-on-primary-container rounded-full font-label-hinglish text-label-hinglish font-bold">Sab</button>
+<button class="shrink-0 px-4 py-2 bg-surface-container text-on-surface rounded-full border border-outline-variant font-label-hinglish text-label-hinglish">Kam stock</button>
+<button class="shrink-0 px-4 py-2 bg-error-container text-on-error-container rounded-full font-label-hinglish text-label-hinglish">Near expiry</button>
+<button class="shrink-0 px-4 py-2 bg-surface-container text-on-surface rounded-full border border-outline-variant font-label-hinglish text-label-hinglish">Dead stock</button>
+<button class="shrink-0 px-4 py-2 bg-surface-container text-on-surface rounded-full border border-outline-variant font-label-hinglish text-label-hinglish">Fridge</button>
+</div>
+</div>
+<!-- Inventory List -->
+<div class="px-md mt-sm space-y-lg">
+<!-- Group A -->
+<div class="space-y-sm">
+<h2 class="font-headline-md text-headline-md text-primary font-bold sticky top-[160px] bg-background/90 backdrop-blur py-1 z-20">A</h2>
+<!-- Item Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-sm shadow-sm scale-98 active:scale-95 transition-transform flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<div class="flex-1 pr-sm">
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface">Augmentin 625 Duo</h3>
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant">Amoxicillin + Clavulanic Acid</p>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">45 strip</span>
+</div>
+</div>
+<!-- Health Bar -->
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-secondary-fixed-dim h-full w-[80%] rounded-full"></div>
+</div>
+</div>
+<!-- Item Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-sm shadow-sm scale-98 active:scale-95 transition-transform flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<div class="flex-1 pr-sm">
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface">Azithral 500mg</h3>
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant">Azithromycin</p>
+<div class="mt-xs inline-flex items-center bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-0.5 rounded-full font-label-hinglish text-[12px]">
+<span class="material-symbols-outlined text-[14px] mr-1">warning</span> Exp 60d
+                            </div>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">14 strip</span>
+</div>
+</div>
+<!-- Health Bar -->
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-tertiary-fixed-dim h-full w-[20%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Group B -->
+<div class="space-y-sm">
+<h2 class="font-headline-md text-headline-md text-primary font-bold sticky top-[160px] bg-background/90 backdrop-blur py-1 z-20">B</h2>
+<!-- Item Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-sm shadow-sm scale-98 active:scale-95 transition-transform flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<div class="flex-1 pr-sm">
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface">Becosules Capsules</h3>
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant">B-Complex with Vitamin C</p>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="font-headline-md text-headline-md font-bold text-error">2 strip</span>
+</div>
+</div>
+<!-- Health Bar -->
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-error h-full w-[5%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Group C -->
+<div class="space-y-sm pb-[96px]">
+<h2 class="font-headline-md text-headline-md text-primary font-bold sticky top-[160px] bg-background/90 backdrop-blur py-1 z-20">C</h2>
+<!-- Item Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-sm shadow-sm scale-98 active:scale-95 transition-transform flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<div class="flex-1 pr-sm">
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface">Calpol 500mg</h3>
+<p class="font-label-hinglish text-label-hinglish text-on-surface-variant">Paracetamol</p>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">120 strip</span>
+</div>
+</div>
+<!-- Health Bar -->
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-secondary-fixed-dim h-full w-[100%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Add Item) -->
+<button class="fixed right-md bottom-[100px] w-14 h-14 bg-primary text-on-primary rounded-xl shadow-lg flex items-center justify-center z-40 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-sm py-xs bg-surface dark:bg-background h-20 border-t border-outline-variant shadow-sm docked full-width">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-hinglish text-label-hinglish mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-hinglish text-label-hinglish mt-1">Billing</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-hinglish text-label-hinglish mt-1">Stock</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label-hinglish text-label-hinglish mt-1">Khata</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-label-hinglish text-label-hinglish mt-1">More</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Missed Sales - Sharma Medical Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#008373",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#63dac5",
+                        "surface-container-low": "#eff4ff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-secondary-fixed-variant": "#005320",
+                        "background": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-surface-variant": "#3d4946",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#bcc9c5",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#a36700",
+                        "on-primary-fixed": "#00201b",
+                        "primary": "#00685b",
+                        "secondary-container": "#7cf994",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container": "#e5eeff",
+                        "inverse-surface": "#213145",
+                        "outline": "#6d7a76",
+                        "on-background": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#002109",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "tertiary": "#825100",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-container": "#fffbff",
+                        "surface": "#f8f9ff",
+                        "on-primary-container": "#f4fffb",
+                        "primary-fixed": "#81f6e0",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#007230",
+                        "secondary-fixed-dim": "#62df7d",
+                        "primary-fixed-dim": "#63dac5",
+                        "secondary": "#006e2d",
+                        "surface-variant": "#d3e4fe",
+                        "surface-tint": "#006b5d",
+                        "secondary-fixed": "#7ffc97",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed-variant": "#005046"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "safe-bottom": "80px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-hinglish": ["Inter"],
+                        "display-currency": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["22px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "label-hinglish": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "display-currency": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "500" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased pb-safe-bottom flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-md py-sm w-full bg-surface dark:bg-background z-40 flex-shrink-0">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-on-surface-variant text-[24px] p-xs rounded-full hover:bg-surface-container transition-colors" onclick="history.back()">arrow_back</button>
+<div class="flex flex-col">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">Missed Sales</h1>
+<span class="font-body-md text-body-md text-on-surface-variant text-[12px]">Jo maanga, nahi tha</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto hide-scrollbar px-md pb-xl">
+<!-- Summary Alert Card -->
+<div class="bg-error-container text-on-error-container p-md rounded-xl mb-md flex items-start gap-sm border border-error/20">
+<span class="material-symbols-outlined text-error text-[28px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md text-[16px] leading-tight mb-base">Is hafte 14 baar stock nahi tha</h2>
+<p class="font-body-md text-body-md text-[14px]">Inko order karo to avoid losing customers.</p>
+</div>
+<button class="bg-error text-on-error px-sm py-xs rounded-lg font-label-hinglish text-label-hinglish text-[12px]">View All</button>
+</div>
+<!-- Search / Input Section -->
+<div class="bg-surface-container-lowest rounded-xl p-xs flex items-center gap-xs border border-outline-variant shadow-sm mb-lg">
+<button class="material-symbols-outlined text-on-surface-variant p-xs">mic</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant py-sm px-xs" placeholder="Kya maanga tha? bolo ya likho" type="text"/>
+<button class="bg-primary text-on-primary px-sm py-sm rounded-lg font-label-hinglish text-label-hinglish whitespace-nowrap flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">add</span> Note karo
+            </button>
+</div>
+<!-- Section Title -->
+<div class="flex justify-between items-center mb-sm">
+<h3 class="font-headline-md text-headline-md text-[16px] text-on-surface">Recent Missed Items</h3>
+<button class="material-symbols-outlined text-on-surface-variant p-xs">filter_list</button>
+</div>
+<!-- List of Missed Items -->
+<div class="flex flex-col gap-sm" id="missed-items-list">
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant flex items-center gap-sm relative item-row" data-id="1">
+<div class="flex items-center justify-center w-6 h-6 rounded border border-outline checkbox-wrapper">
+<span class="material-symbols-outlined text-[18px] text-primary opacity-0 check-icon" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-base">
+<h4 class="font-headline-md text-headline-md text-[16px] font-bold text-on-surface">Augmentin 625 Duo</h4>
+<span class="bg-tertiary-container text-on-tertiary-container px-xs py-base rounded text-[10px] font-bold uppercase tracking-wider">3 baar</span>
+</div>
+<p class="font-body-md text-body-md text-[12px] text-on-surface-variant mb-xs">Amoxicillin + Clavulanic Acid</p>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-[12px] text-outline">Last: Today, 10:30 AM</span>
+<button class="text-secondary font-label-hinglish text-label-hinglish text-[12px] flex items-center gap-xs po-btn">
+<span class="material-symbols-outlined text-[14px]">shopping_cart_checkout</span> PO mein daalo
+                        </button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant flex items-center gap-sm relative item-row" data-id="2">
+<div class="flex items-center justify-center w-6 h-6 rounded border border-outline checkbox-wrapper">
+<span class="material-symbols-outlined text-[18px] text-primary opacity-0 check-icon" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-base">
+<h4 class="font-headline-md text-headline-md text-[16px] font-bold text-on-surface">Dolo 650mg</h4>
+<span class="bg-tertiary-container text-on-tertiary-container px-xs py-base rounded text-[10px] font-bold uppercase tracking-wider">5 baar</span>
+</div>
+<p class="font-body-md text-body-md text-[12px] text-on-surface-variant mb-xs">Paracetamol</p>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-[12px] text-outline">Last: Yesterday, 4:15 PM</span>
+<button class="text-secondary font-label-hinglish text-label-hinglish text-[12px] flex items-center gap-xs po-btn">
+<span class="material-symbols-outlined text-[14px]">shopping_cart_checkout</span> PO mein daalo
+                        </button>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant flex items-center gap-sm relative item-row" data-id="3">
+<div class="flex items-center justify-center w-6 h-6 rounded border border-outline checkbox-wrapper">
+<span class="material-symbols-outlined text-[18px] text-primary opacity-0 check-icon" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-base">
+<h4 class="font-headline-md text-headline-md text-[16px] font-bold text-on-surface">Telmikind 40</h4>
+<span class="bg-surface-variant text-on-surface-variant px-xs py-base rounded text-[10px] font-bold uppercase tracking-wider">1 baar</span>
+</div>
+<p class="font-body-md text-body-md text-[12px] text-on-surface-variant mb-xs">Telmisartan</p>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-[12px] text-outline">Last: 2 days ago</span>
+<button class="text-secondary font-label-hinglish text-label-hinglish text-[12px] flex items-center gap-xs po-btn">
+<span class="material-symbols-outlined text-[14px]">shopping_cart_checkout</span> PO mein daalo
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom spacing for sticky bar -->
+<div class="h-24"></div>
+</main>
+<!-- Sticky Bottom Bar (Purchase Order) - Hidden by default -->
+<div class="fixed bottom-[80px] left-0 w-full px-md py-sm bg-surface-container-high border-t border-outline-variant shadow-[0_-4px_12px_rgba(0,0,0,0.05)] transform translate-y-full transition-transform duration-300 flex justify-between items-center z-40" id="sticky-po-bar">
+<div>
+<span class="font-label-hinglish text-label-hinglish text-on-surface block" id="selected-count">0 items selected</span>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-label-hinglish text-label-hinglish flex items-center gap-xs">
+            Purchase Order banao <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-sm py-xs bg-surface dark:bg-background h-20 shadow-[0_-2px_8px_rgba(0,0,0,0.05)] flex-shrink-0">
+<!-- Inactive: Home -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-hinglish text-label-hinglish text-[12px] mt-1">Home</span>
+</div>
+<!-- Inactive: Billing -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+<span class="font-label-hinglish text-label-hinglish text-[12px] mt-1">Billing</span>
+</div>
+<!-- Inactive: Stock -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+<span class="font-label-hinglish text-label-hinglish text-[12px] mt-1">Stock</span>
+</div>
+<!-- Inactive: Khata -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">menu_book</span>
+<span class="font-label-hinglish text-label-hinglish text-[12px] mt-1">Khata</span>
+</div>
+<!-- Active: More -->
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl px-4 py-1 hover:bg-surface-container-high transition-colors scale-98 active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="font-label-hinglish text-label-hinglish text-[12px] mt-1">More</span>
+</div>
+</nav>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const rows = document.querySelectorAll('.item-row');
+            const stickyBar = document.getElementById('sticky-po-bar');
+            const countDisplay = document.getElementById('selected-count');
+            let selectedCount = 0;
+
+            rows.forEach(row => {
+                row.addEventListener('click', (e) => {
+                    // Prevent row selection if clicking the individual PO button
+                    if(e.target.closest('.po-btn')) return;
+
+                    const checkbox = row.querySelector('.checkbox-wrapper');
+                    const icon = row.querySelector('.check-icon');
+                    
+                    row.classList.toggle('bg-primary-container/10');
+                    row.classList.toggle('border-primary');
+                    
+                    if(row.classList.contains('bg-primary-container/10')) {
+                        checkbox.classList.replace('border-outline', 'border-primary');
+                        checkbox.classList.add('bg-primary');
+                        icon.classList.replace('opacity-0', 'opacity-100');
+                        icon.classList.replace('text-primary', 'text-on-primary');
+                        selectedCount++;
+                    } else {
+                        checkbox.classList.replace('border-primary', 'border-outline');
+                        checkbox.classList.remove('bg-primary');
+                        icon.classList.replace('opacity-100', 'opacity-0');
+                        icon.classList.replace('text-on-primary', 'text-primary');
+                        selectedCount--;
+                    }
+
+                    updateStickyBar();
+                });
+            });
+
+            function updateStickyBar() {
+                if(selectedCount > 0) {
+                    countDisplay.textContent = `${selectedCount} item${selectedCount > 1 ? 's' : ''} selected`;
+                    stickyBar.classList.remove('translate-y-full');
+                } else {
+                    stickyBar.classList.add('translate-y-full');
+                }
+            }
+        });
+    </script>
+</body></html>

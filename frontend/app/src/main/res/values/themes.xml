@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base theme for the manifest. Compose (Material3) draws the actual UI;
+         this only sets the window before Compose takes over. -->
+    <style name="Theme.Patta" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">#00685B</item>
+        <item name="android:windowBackground">#F8F9FF</item>
+    </style>
+</resources>
