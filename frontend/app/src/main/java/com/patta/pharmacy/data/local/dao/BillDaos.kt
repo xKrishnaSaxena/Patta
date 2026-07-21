@@ -8,6 +8,12 @@ import com.patta.pharmacy.data.local.entity.BillEntity
 import com.patta.pharmacy.data.local.entity.BillItemEntity
 import kotlinx.coroutines.flow.Flow
 
+/** Sales grouped by GST rate for a period — powers the GSTR-1 summary. */
+data class GstBucket(
+    val gstPercent: Int,
+    val grossPaise: Long,
+)
+
 /** A bill line plus its medicine name — used by the Sale Return screen. */
 data class BillItemRow(
     @Embedded val item: BillItemEntity,
@@ -84,6 +90,19 @@ interface BillItemDao {
 
     @Query("UPDATE bill_items SET returnedQty = returnedQty + :delta WHERE id = :id")
     suspend fun addReturned(id: String, delta: Double)
+
+    /** Gross sales per GST rate between two timestamps (MRP is GST-inclusive). */
+    @Query(
+        """
+        SELECT bi.gstPercent AS gstPercent, IFNULL(SUM(bi.lineTotalPaise), 0) AS grossPaise
+        FROM bill_items bi
+        JOIN bills bl ON bl.id = bi.billId
+        WHERE bl.dateTime BETWEEN :from AND :to AND bl.isDeleted = 0
+        GROUP BY bi.gstPercent
+        ORDER BY bi.gstPercent
+        """
+    )
+    suspend fun gstBreakdown(from: Long, to: Long): List<GstBucket>
 
     /** Estimated gross profit since [start]: (sell rate − batch landed cost) × qty. */
     @Query(

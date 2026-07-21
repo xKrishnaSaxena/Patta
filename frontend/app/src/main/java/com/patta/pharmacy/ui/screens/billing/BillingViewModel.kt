@@ -10,6 +10,8 @@ import com.patta.pharmacy.data.repo.BillTotals
 import com.patta.pharmacy.data.repo.CompletedBill
 import com.patta.pharmacy.data.repo.CustomerRepository
 import com.patta.pharmacy.data.repo.MissedSaleRepository
+import com.patta.pharmacy.data.repo.ScheduleH1Repository
+import com.patta.pharmacy.data.repo.StoreRepository
 import com.patta.pharmacy.data.repo.computeTotals
 import com.patta.pharmacy.util.Money
 import com.patta.pharmacy.util.newId
@@ -47,8 +49,14 @@ class BillingViewModel @Inject constructor(
     private val repository: BillingRepository,
     private val customerRepository: CustomerRepository,
     private val missedSaleRepository: MissedSaleRepository,
+    private val scheduleH1Repository: ScheduleH1Repository,
+    storeRepository: StoreRepository,
     private val voskEngine: VoskEngine,
 ) : ViewModel() {
+
+    /** Shop details for the bill header + PDF. */
+    val store: StateFlow<com.patta.pharmacy.data.local.entity.StoreEntity?> =
+        storeRepository.observe().stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
     private val _query = MutableStateFlow("")
     val query: StateFlow<String> = _query.asStateFlow()
@@ -116,6 +124,7 @@ class BillingViewModel @Inject constructor(
                 mrpPaise = row.sellMrpPaise,
                 unitsPerPack = row.medicine.unitsPerPack,
                 allowLooseSale = row.medicine.allowLooseSale,
+                isScheduleH1 = row.medicine.isScheduleH1,
                 perTablet = loose,
                 qty = 1,
                 availablePacks = row.batchQty,
@@ -278,6 +287,14 @@ class BillingViewModel @Inject constructor(
     }
 
     fun clearLastBill() { _lastBill.value = null }
+
+    /** Records the Schedule-H1 lines of a saved bill into the legal register. */
+    fun saveH1Record(bill: CompletedBill, patient: String, doctor: String) {
+        viewModelScope.launch {
+            scheduleH1Repository.recordForBill(bill.billNo, bill.lines, patient, doctor)
+            _message.value = "H1 register mein note ho gaya"
+        }
+    }
 
     fun clearMessage() { _message.value = null }
 }

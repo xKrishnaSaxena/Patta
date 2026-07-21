@@ -41,6 +41,9 @@ import com.patta.pharmacy.ui.screens.po.PurchaseOrderScreen
 import com.patta.pharmacy.ui.screens.purchase.PurchaseEntryScreen
 import com.patta.pharmacy.ui.screens.salereturn.BillReturnScreen
 import com.patta.pharmacy.ui.screens.salereturn.RecentBillsScreen
+import com.patta.pharmacy.ui.screens.gst.GstSummaryScreen
+import com.patta.pharmacy.ui.screens.h1.ScheduleH1Screen
+import com.patta.pharmacy.ui.screens.settings.ShopProfileScreen
 import com.patta.pharmacy.ui.screens.settings.VoiceLanguageScreen
 import com.patta.pharmacy.ui.screens.stock.StockListScreen
 import com.patta.pharmacy.ui.screens.supplier.SupplierLedgerScreen
@@ -168,6 +171,9 @@ fun PattaNavGraph(navController: NavHostController = rememberNavController()) {
                 )
             }
             composable("purchase_order") { PurchaseOrderScreen(onBack = { navController.popBackStack() }) }
+            composable("shop_profile") { ShopProfileScreen(onBack = { navController.popBackStack() }) }
+            composable("gst_summary") { GstSummaryScreen(onBack = { navController.popBackStack() }) }
+            composable("h1_register") { ScheduleH1Screen(onBack = { navController.popBackStack() }) }
 
             composable("sale_return") {
                 RecentBillsScreen(

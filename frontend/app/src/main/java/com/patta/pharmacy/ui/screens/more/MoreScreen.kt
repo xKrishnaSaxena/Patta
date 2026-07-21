@@ -31,13 +31,14 @@ private val moreSections = listOf(
     ),
     "Hisaab" to listOf(
         MoreItem("Reports & Day Close", "Din ka hisaab, profit", "reports"),
-        MoreItem("GST Summary", "GSTR-1 ready", "reports"),
+        MoreItem("GST Summary", "GSTR-1 ready", "gst_summary"),
     ),
     "Voice" to listOf(
         MoreItem("Voice Assistant", "Bolke poocho — collection, stock, payment", "voice_assistant"),
     ),
     "Settings" to listOf(
-        MoreItem("Shop Profile", "Naam, license, GSTIN"),
+        MoreItem("Shop Profile", "Naam, license, GSTIN", "shop_profile"),
+        MoreItem("Schedule H1 Register", "Prescription wali dawai ka record", "h1_register"),
         MoreItem("Backup & Sync", "Data safe rakho"),
         MoreItem("Voice & Language", "Hinglish / Hindi / English", "voice_language"),
     ),

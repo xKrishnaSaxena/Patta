@@ -26,12 +26,15 @@ data class HomeUiState(
     val day: DaySummary = DaySummary(0, 0, 0, 0),
     val lowStock: List<StockRow> = emptyList(),
     val nearExpiryCount: Int = 0,
+    val shopName: String = "Patta",
+    val shopLicense: String = "",
 )
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     billDao: BillDao,
     medicineRepository: MedicineRepository,
+    storeRepository: com.patta.pharmacy.data.repo.StoreRepository,
     private val voiceQueryRepository: VoiceQueryRepository,
 ) : ViewModel() {
 
@@ -39,13 +42,23 @@ class HomeViewModel @Inject constructor(
         LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
 
     val uiState: StateFlow<HomeUiState> =
-        combine(billDao.observeDaySummary(startOfDay), medicineRepository.stockList()) { day, stock ->
+        combine(
+            billDao.observeDaySummary(startOfDay),
+            medicineRepository.stockList(),
+            storeRepository.observe(),
+        ) { day, stock, store ->
             val low = stock.filter { it.medicine.reorderLevel > 0 && it.totalQty <= it.medicine.reorderLevel }
             val nearExpiry = stock.count {
                 val m = monthsUntilExpiry(it.nearestExpiryYm)
                 m != null && m in 0..3
             }
-            HomeUiState(day = day, lowStock = low, nearExpiryCount = nearExpiry)
+            HomeUiState(
+                day = day,
+                lowStock = low,
+                nearExpiryCount = nearExpiry,
+                shopName = store?.name?.ifBlank { null } ?: "Patta",
+                shopLicense = store?.drugLicenseNo.orEmpty(),
+            )
         }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUiState())
 
     // Hold-to-talk voice query answer (shown in a dialog + spoken).

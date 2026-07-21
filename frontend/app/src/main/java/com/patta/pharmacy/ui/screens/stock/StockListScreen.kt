@@ -55,7 +55,7 @@ fun StockListScreen(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Sharma Medical Store", fontWeight = FontWeight.Bold) },
+                title = { Text("Stock", fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),

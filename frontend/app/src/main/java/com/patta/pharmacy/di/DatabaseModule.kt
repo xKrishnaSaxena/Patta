@@ -43,6 +43,8 @@ object DatabaseModule {
     @Provides fun providePurchaseItemDao(db: PattaDatabase): PurchaseItemDao = db.purchaseItemDao()
     @Provides fun provideCustomerDao(db: PattaDatabase): CustomerDao = db.customerDao()
     @Provides fun provideCustomerLedgerDao(db: PattaDatabase): CustomerLedgerDao = db.customerLedgerDao()
+    @Provides fun provideStoreDao(db: PattaDatabase): com.patta.pharmacy.data.local.dao.StoreDao = db.storeDao()
+    @Provides fun provideScheduleH1Dao(db: PattaDatabase): com.patta.pharmacy.data.local.dao.ScheduleH1Dao = db.scheduleH1Dao()
     @Provides fun provideMissedSaleDao(db: PattaDatabase): com.patta.pharmacy.data.local.dao.MissedSaleDao = db.missedSaleDao()
     @Provides fun providePurchaseOrderDao(db: PattaDatabase): com.patta.pharmacy.data.local.dao.PurchaseOrderDao = db.purchaseOrderDao()
     @Provides fun providePurchaseOrderItemDao(db: PattaDatabase): com.patta.pharmacy.data.local.dao.PurchaseOrderItemDao = db.purchaseOrderItemDao()

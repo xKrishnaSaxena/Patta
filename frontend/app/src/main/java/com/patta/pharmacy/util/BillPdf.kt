@@ -19,11 +19,16 @@ import java.util.Locale
  */
 object BillPdf {
 
-    private const val SHOP_NAME = "Sharma Medical Store"
-    private const val SHOP_LICENSE = "DL: 20B/21B-4567"
-    private const val SHOP_GSTIN = "GSTIN: 22ABCDE1234F1Z5"
-
-    fun generateAndShare(context: Context, bill: CompletedBill) {
+    fun generateAndShare(
+        context: Context,
+        bill: CompletedBill,
+        shopName: String,
+        shopLicense: String,
+        shopGstin: String,
+    ) {
+        val SHOP_NAME = shopName.ifBlank { "Medical Store" }
+        val SHOP_LICENSE = if (shopLicense.isBlank()) "" else "DL: $shopLicense"
+        val SHOP_GSTIN = if (shopGstin.isBlank()) "" else "GSTIN: $shopGstin"
         val doc = PdfDocument()
         val pageWidth = 320
         val lineH = 18
@@ -45,8 +50,9 @@ object BillPdf {
         val rightX = (pageWidth - 14).toFloat()
 
         c.drawText(SHOP_NAME, left, y.toFloat(), title); y += lineH
-        c.drawText(SHOP_LICENSE, left, y.toFloat(), small); y += 12
-        c.drawText(SHOP_GSTIN, left, y.toFloat(), small); y += lineH
+        if (SHOP_LICENSE.isNotBlank()) { c.drawText(SHOP_LICENSE, left, y.toFloat(), small); y += 12 }
+        if (SHOP_GSTIN.isNotBlank()) { c.drawText(SHOP_GSTIN, left, y.toFloat(), small) }
+        y += lineH
 
         val dateStr = SimpleDateFormat("dd/MM/yy  hh:mm a", Locale("en", "IN")).format(Date(bill.dateTimeMillis))
         c.drawText("Bill: ${bill.billNo}", left, y.toFloat(), normal)

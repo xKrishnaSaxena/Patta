@@ -49,8 +49,9 @@ import com.patta.pharmacy.data.local.entity.SupplierLedgerEntry
         MissedSaleEntity::class,
         PurchaseOrderEntity::class,
         PurchaseOrderItemEntity::class,
+        com.patta.pharmacy.data.local.entity.ScheduleH1Entry::class,
     ],
-    version = 4,
+    version = 5,
     exportSchema = true,
 )
 abstract class PattaDatabase : RoomDatabase() {
@@ -65,6 +66,8 @@ abstract class PattaDatabase : RoomDatabase() {
     abstract fun purchaseItemDao(): PurchaseItemDao
     abstract fun customerDao(): CustomerDao
     abstract fun customerLedgerDao(): CustomerLedgerDao
+    abstract fun storeDao(): com.patta.pharmacy.data.local.dao.StoreDao
+    abstract fun scheduleH1Dao(): com.patta.pharmacy.data.local.dao.ScheduleH1Dao
     abstract fun missedSaleDao(): MissedSaleDao
     abstract fun purchaseOrderDao(): PurchaseOrderDao
     abstract fun purchaseOrderItemDao(): PurchaseOrderItemDao

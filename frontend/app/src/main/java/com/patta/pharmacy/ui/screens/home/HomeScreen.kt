@@ -98,8 +98,10 @@ fun HomeScreen(
     ) {
         item {
             Column {
-                Text("Sharma Medical Store", style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
-                Text("License: 20B/21B-4567", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(state.shopName, style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
+                if (state.shopLicense.isNotBlank()) {
+                    Text("License: ${state.shopLicense}", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
             }
         }
 

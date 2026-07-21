@@ -198,6 +198,25 @@ data class PurchaseItemEntity(
     val lineTotalPaise: Long,
 )
 
+/** Schedule H1 sales register — legally required, kept for 3 years. */
+@Entity(tableName = "h1_register", indices = [Index("date"), Index("billId"), Index("storeId")])
+data class ScheduleH1Entry(
+    @PrimaryKey val id: String,
+    val storeId: String = DEFAULT_STORE_ID,
+    val billId: String? = null,
+    val billNo: String = "",
+    val medicineId: String? = null,
+    val medicineName: String,
+    val batchNo: String = "",
+    val qty: Double,
+    val patientName: String,
+    val doctorName: String,
+    val date: Long,
+    val rxPhotoUri: String? = null,
+    val createdAt: Long,
+    val syncedAt: Long? = null,
+)
+
 @Entity(tableName = "missed_sales", indices = [Index("medicineName"), Index("lastAskedAt"), Index("storeId")])
 data class MissedSaleEntity(
     @PrimaryKey val id: String,

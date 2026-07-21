@@ -19,6 +19,7 @@ data class CartLine(
     val mrpPaise: Long,
     val unitsPerPack: Int,
     val allowLooseSale: Boolean,
+    val isScheduleH1: Boolean = false,
     val perTablet: Boolean = false,
     val qty: Int,
     val availablePacks: Double,

@@ -81,6 +81,7 @@ fun BillingScreen(viewModel: BillingViewModel = hiltViewModel()) {
     val message by viewModel.message.collectAsStateWithLifecycle()
     val customerResults by viewModel.customerResults.collectAsStateWithLifecycle()
     val lastBill by viewModel.lastBill.collectAsStateWithLifecycle()
+    val store by viewModel.store.collectAsStateWithLifecycle()
     val speak by viewModel.speak.collectAsStateWithLifecycle()
     val pending by viewModel.pending.collectAsStateWithLifecycle()
     var showUdhaar by remember { mutableStateOf(false) }
@@ -125,7 +126,7 @@ fun BillingScreen(viewModel: BillingViewModel = hiltViewModel()) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Sharma Medical Store", fontWeight = FontWeight.Bold) },
+                title = { Text(store?.name?.ifBlank { null } ?: "Patta", fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
@@ -199,17 +200,67 @@ fun BillingScreen(viewModel: BillingViewModel = hiltViewModel()) {
         )
     }
 
+    var h1Pending by remember { mutableStateOf<com.patta.pharmacy.data.repo.CompletedBill?>(null) }
+    val finishBill: (com.patta.pharmacy.data.repo.CompletedBill) -> Unit = { bill ->
+        if (bill.lines.any { it.isScheduleH1 }) h1Pending = bill
+        viewModel.clearLastBill()
+    }
+
     lastBill?.let { bill ->
         AlertDialog(
-            onDismissRequest = { viewModel.clearLastBill() },
+            onDismissRequest = { finishBill(bill) },
             title = { Text("Bill ${bill.billNo} bana ✅") },
-            text = { Text("${Money.format(bill.totals.totalPaise)} · ${bill.paymentMode.uppercase()}") },
+            text = {
+                Column {
+                    Text("${Money.format(bill.totals.totalPaise)} · ${bill.paymentMode.uppercase()}")
+                    if (bill.lines.any { it.isScheduleH1 }) {
+                        Text(
+                            "Schedule H1 dawai hai — patient/doctor ka naam poocha jayega",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.padding(top = 6.dp),
+                        )
+                    }
+                }
+            },
             confirmButton = {
-                TextButton(onClick = { BillPdf.generateAndShare(context, bill); viewModel.clearLastBill() }) {
+                TextButton(onClick = {
+                    BillPdf.generateAndShare(
+                        context = context,
+                        bill = bill,
+                        shopName = store?.name.orEmpty(),
+                        shopLicense = store?.drugLicenseNo.orEmpty(),
+                        shopGstin = store?.gstin.orEmpty(),
+                    )
+                    finishBill(bill)
+                }) {
                     Text("Bhejo (PDF/WhatsApp)")
                 }
             },
-            dismissButton = { TextButton(onClick = { viewModel.clearLastBill() }) { Text("Close") } },
+            dismissButton = { TextButton(onClick = { finishBill(bill) }) { Text("Close") } },
+        )
+    }
+
+    h1Pending?.let { bill ->
+        var patient by remember(bill.billNo) { mutableStateOf("") }
+        var doctor by remember(bill.billNo) { mutableStateOf("") }
+        AlertDialog(
+            onDismissRequest = { h1Pending = null },
+            title = { Text("Schedule H1 — record zaroori") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text("Is bill mein H1 dawai hai. Register ke liye naam daalo.")
+                    PattaField(patient, { patient = it }, "Patient ka naam", Modifier.fillMaxWidth())
+                    PattaField(doctor, { doctor = it }, "Doctor ka naam", Modifier.fillMaxWidth())
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = { viewModel.saveH1Record(bill, patient, doctor); h1Pending = null },
+                    enabled = patient.isNotBlank(),
+                ) { Text("Save") }
+            },
+            dismissButton = { TextButton(onClick = { h1Pending = null }) { Text("Baad mein") } },
         )
     }
 
