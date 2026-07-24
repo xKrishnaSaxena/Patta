@@ -20,6 +20,7 @@ data class CartLine(
     val unitsPerPack: Int,
     val allowLooseSale: Boolean,
     val isScheduleH1: Boolean = false,
+    val dosage: String = "",
     val perTablet: Boolean = false,
     val qty: Int,
     val availablePacks: Double,
@@ -70,4 +71,5 @@ data class CompletedBill(
     val paymentMode: String,
     val lines: List<CartLine>,
     val totals: BillTotals,
+    val customerPhone: String = "",   // prefilled for udhaar bills so WhatsApp is one tap
 )

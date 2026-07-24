@@ -42,6 +42,7 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.patta.pharmacy.ui.components.BarcodeScanner
+import com.patta.pharmacy.ui.components.DosagePicker
 import com.patta.pharmacy.ui.components.PattaField
 import com.patta.pharmacy.ui.components.PattaPrimaryButton
 import com.patta.pharmacy.ui.components.QtyStepper
@@ -110,6 +111,11 @@ fun AddEditMedicineScreen(
                         PattaField(form.barcode, { form = form.copy(barcode = it) }, "Barcode", Modifier.weight(1f))
                         OutlinedButton(onClick = startScan) { Text("Scan") }
                     }
+                }
+            }
+            item {
+                FormSection("Dosage — kaise leni hai") {
+                    DosagePicker(form.defaultDosage, { form = form.copy(defaultDosage = it) })
                 }
             }
             item {

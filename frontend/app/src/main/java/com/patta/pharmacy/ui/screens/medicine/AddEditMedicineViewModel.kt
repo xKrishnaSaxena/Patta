@@ -30,6 +30,7 @@ data class MedicineForm(
     val isScheduleH1: Boolean = false,
     val isFridgeItem: Boolean = false,
     val barcode: String = "",
+    val defaultDosage: String = "",
     val openingQty: String = "",
     val openingBatchNo: String = "",
     val openingExpiry: String = "",   // MM/YY
@@ -40,6 +41,7 @@ data class MedicineForm(
 @HiltViewModel
 class AddEditMedicineViewModel @Inject constructor(
     private val repository: MedicineRepository,
+    private val guide: com.patta.pharmacy.ui.guide.GuideController,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
@@ -79,11 +81,13 @@ class AddEditMedicineViewModel @Inject constructor(
                 isScheduleH1 = form.isScheduleH1,
                 isFridgeItem = form.isFridgeItem,
                 barcode = form.barcode.ifBlank { null },
+                defaultDosage = form.defaultDosage,
                 // Opening stock only applies when creating a brand-new medicine.
                 openingQty = if (editingId == null) form.openingQty.toDoubleOrNull() ?: 0.0 else 0.0,
                 openingBatchNo = form.openingBatchNo,
                 openingExpiryYm = if (editingId == null) parseExpiryYm(form.openingExpiry) else null,
             )
+            guide.complete(com.patta.pharmacy.ui.guide.GuideStep.ADD_MEDICINE)
             onDone()
         }
     }
@@ -104,6 +108,7 @@ class AddEditMedicineViewModel @Inject constructor(
         isScheduleH1 = isScheduleH1,
         isFridgeItem = isFridgeItem,
         barcode = barcode.orEmpty(),
+        defaultDosage = defaultDosage,
     )
 
     /** "08/27" -> 202708 ; blank/invalid -> null. */

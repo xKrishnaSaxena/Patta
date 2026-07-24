@@ -56,6 +56,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.patta.pharmacy.data.local.dao.SellableRow
 import com.patta.pharmacy.data.local.entity.CustomerEntity
 import com.patta.pharmacy.ui.components.PattaField
+import com.patta.pharmacy.ui.components.PattaPrimaryButton
 import com.patta.pharmacy.data.repo.CartLine
 import com.patta.pharmacy.ui.components.BarcodeScanner
 import com.patta.pharmacy.ui.components.MoneyText
@@ -66,6 +67,7 @@ import com.patta.pharmacy.ui.theme.ExpiryAmber
 import com.patta.pharmacy.ui.theme.MoneyIn
 import com.patta.pharmacy.util.BillPdf
 import com.patta.pharmacy.util.Money
+import com.patta.pharmacy.util.WhatsAppBill
 import com.patta.pharmacy.voice.VoicePrefs
 import com.patta.pharmacy.voice.rememberVoiceController
 
@@ -155,7 +157,7 @@ fun BillingScreen(viewModel: BillingViewModel = hiltViewModel()) {
             } else {
                 Box(Modifier.weight(1f)) {
                     if (cart.isEmpty()) EmptyCart()
-                    else CartList(cart, viewModel::changeQty, viewModel::changeUnit, viewModel::removeLine)
+                    else CartList(cart, viewModel::changeQty, viewModel::changeUnit, viewModel::changeDosage, viewModel::removeLine)
                 }
                 SummaryBar(
                     subtotal = totals.subtotalPaise,
@@ -207,20 +209,29 @@ fun BillingScreen(viewModel: BillingViewModel = hiltViewModel()) {
     }
 
     lastBill?.let { bill ->
+        var phone by remember(bill.billNo) { mutableStateOf(bill.customerPhone) }
         AlertDialog(
             onDismissRequest = { finishBill(bill) },
             title = { Text("Bill ${bill.billNo} bana ✅") },
             text = {
-                Column {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text("${Money.format(bill.totals.totalPaise)} · ${bill.paymentMode.uppercase()}")
                     if (bill.lines.any { it.isScheduleH1 }) {
                         Text(
                             "Schedule H1 dawai hai — patient/doctor ka naam poocha jayega",
                             style = MaterialTheme.typography.labelLarge,
                             color = MaterialTheme.colorScheme.error,
-                            modifier = Modifier.padding(top = 6.dp),
                         )
                     }
+                    PattaField(phone, { phone = it }, "Customer WhatsApp number", Modifier.fillMaxWidth(), numeric = true)
+                    PattaPrimaryButton(
+                        "WhatsApp pe bhejo",
+                        onClick = {
+                            WhatsAppBill.send(context, phone, WhatsAppBill.buildText(bill, store?.name.orEmpty()))
+                            finishBill(bill)
+                        },
+                        enabled = phone.filter { it.isDigit() }.length >= 10,
+                    )
                 }
             },
             confirmButton = {
@@ -234,7 +245,7 @@ fun BillingScreen(viewModel: BillingViewModel = hiltViewModel()) {
                     )
                     finishBill(bill)
                 }) {
-                    Text("Bhejo (PDF/WhatsApp)")
+                    Text("PDF share")
                 }
             },
             dismissButton = { TextButton(onClick = { finishBill(bill) }) { Text("Close") } },
@@ -365,6 +376,7 @@ private fun CartList(
     cart: List<CartLine>,
     onQty: (Int, Int) -> Unit,
     onUnit: (Int, Boolean) -> Unit,
+    onDosage: (Int, String) -> Unit,
     onRemove: (Int) -> Unit,
 ) {
     LazyColumn(
@@ -412,6 +424,13 @@ private fun CartList(
                         }
                         QtyStepper(value = line.qty, onChange = { onQty(index, it) }, min = 1)
                     }
+                    PattaField(
+                        line.dosage,
+                        { onDosage(index, it) },
+                        "Kaise le (bill pe chhpega)",
+                        Modifier.fillMaxWidth().padding(top = 6.dp),
+                        singleLine = false,
+                    )
                 }
             }
         }

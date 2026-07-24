@@ -85,6 +85,7 @@ class BillingRepository @Inject constructor(
                         ratePaise = l.ratePaise,
                         gstPercent = l.gstPercent,
                         lineTotalPaise = l.lineTotalPaise,
+                        dosage = l.dosage,
                     )
                 }
             )

@@ -21,6 +21,7 @@ data class ShopForm(
 @HiltViewModel
 class ShopProfileViewModel @Inject constructor(
     private val repository: StoreRepository,
+    private val guide: com.patta.pharmacy.ui.guide.GuideController,
 ) : ViewModel() {
 
     private val _initial = MutableStateFlow<ShopForm?>(null)
@@ -47,6 +48,7 @@ class ShopProfileViewModel @Inject constructor(
         viewModelScope.launch {
             repository.save(form.name, form.drugLicenseNo, form.gstin, form.address, form.phone)
             _message.value = "Shop profile save ho gaya"
+            guide.complete(com.patta.pharmacy.ui.guide.GuideStep.SHOP_PROFILE)
             onDone()
         }
     }

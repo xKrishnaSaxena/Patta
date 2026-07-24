@@ -1,5 +1,6 @@
 package com.patta.pharmacy.ui.navigation
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.MenuBook
@@ -20,6 +21,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -33,6 +35,8 @@ import com.patta.pharmacy.ui.screens.home.HomeScreen
 import com.patta.pharmacy.ui.screens.khata.CustomerLedgerScreen
 import com.patta.pharmacy.ui.screens.khata.CustomersScreen
 import com.patta.pharmacy.ui.screens.reports.ReportsScreen
+import com.patta.pharmacy.ui.onboarding.OnboardingPrefs
+import com.patta.pharmacy.ui.onboarding.OnboardingScreen
 import com.patta.pharmacy.ui.screens.medicine.AddEditMedicineScreen
 import com.patta.pharmacy.ui.screens.placeholder.SimplePlaceholder
 import com.patta.pharmacy.ui.screens.missedsale.MissedSalesScreen
@@ -49,6 +53,18 @@ import com.patta.pharmacy.ui.screens.stock.StockListScreen
 import com.patta.pharmacy.ui.screens.supplier.SupplierLedgerScreen
 import com.patta.pharmacy.ui.screens.supplier.SuppliersScreen
 import com.patta.pharmacy.ui.screens.voice.VoiceAssistantScreen
+import com.patta.pharmacy.ui.guide.GuideBanner
+import com.patta.pharmacy.ui.guide.GuideStep
+import com.patta.pharmacy.ui.guide.GuideViewModel
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 sealed class TopDest(val route: String, val label: String, val icon: ImageVector) {
     data object Home : TopDest("home", "Home", Icons.Filled.Home)
@@ -71,23 +87,66 @@ object Routes {
 
 @Composable
 fun PattaNavGraph(navController: NavHostController = rememberNavController()) {
+    val context = LocalContext.current
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = backStackEntry?.destination?.route
     val showBottomBar = bottomTabs.any { it.route == currentRoute }
 
+    // Interactive first-run guide: drives the user through 3 real tasks.
+    val guideVm: GuideViewModel = hiltViewModel()
+    val guideStep by guideVm.controller.step.collectAsStateWithLifecycle()
+    val guideFinished by guideVm.controller.justFinished.collectAsStateWithLifecycle()
+
+    LaunchedEffect(Unit) {
+        if (!OnboardingPrefs.seen(context)) guideVm.controller.start()
+    }
+    // When the current step changes, take the user to that step's screen.
+    LaunchedEffect(guideStep) {
+        when (val s = guideStep) {
+            GuideStep.SHOP_PROFILE, GuideStep.ADD_MEDICINE ->
+                navController.navigate(s.route) { launchSingleTop = true }
+            GuideStep.MAKE_BILL -> navController.navigate(TopDest.Billing.route) {
+                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                launchSingleTop = true; restoreState = true
+            }
+            null -> Unit
+        }
+    }
+    LaunchedEffect(guideFinished) {
+        if (guideFinished) {
+            OnboardingPrefs.markSeen(context)
+            navController.navigate(TopDest.Home.route) {
+                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                launchSingleTop = true
+            }
+        }
+    }
+
     Scaffold(
         bottomBar = {
-            if (showBottomBar) {
-                PattaBottomBar(
-                    currentDestination = backStackEntry?.destination,
-                    onSelect = { dest ->
-                        navController.navigate(dest.route) {
-                            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
+            // Guide banner shows on every screen while active; bottom-nav only on tabs.
+            if (guideStep != null || showBottomBar) {
+                Column {
+                    guideStep?.let { s ->
+                        GuideBanner(
+                            step = s,
+                            onGo = { navController.navigate(s.route) { launchSingleTop = true } },
+                            onSkip = { guideVm.controller.skip(); OnboardingPrefs.markSeen(context) },
+                        )
                     }
-                )
+                    if (showBottomBar) {
+                        PattaBottomBar(
+                            currentDestination = backStackEntry?.destination,
+                            onSelect = { dest ->
+                                navController.navigate(dest.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            }
+                        )
+                    }
+                }
             }
         }
     ) { padding ->
@@ -96,6 +155,14 @@ fun PattaNavGraph(navController: NavHostController = rememberNavController()) {
             startDestination = TopDest.Home.route,
             modifier = Modifier.padding(padding)
         ) {
+            composable("onboarding") {
+                OnboardingScreen(onFinish = {
+                    OnboardingPrefs.markSeen(context)
+                    navController.navigate(TopDest.Home.route) {
+                        popUpTo("onboarding") { inclusive = true }
+                    }
+                })
+            }
             composable(TopDest.Home.route) {
                 HomeScreen(onNavigate = { route ->
                     navController.navigate(route) {
@@ -174,6 +241,7 @@ fun PattaNavGraph(navController: NavHostController = rememberNavController()) {
             composable("shop_profile") { ShopProfileScreen(onBack = { navController.popBackStack() }) }
             composable("gst_summary") { GstSummaryScreen(onBack = { navController.popBackStack() }) }
             composable("h1_register") { ScheduleH1Screen(onBack = { navController.popBackStack() }) }
+            composable("tour") { OnboardingScreen(onFinish = { navController.popBackStack() }) }
 
             composable("sale_return") {
                 RecentBillsScreen(
@@ -188,6 +256,30 @@ fun PattaNavGraph(navController: NavHostController = rememberNavController()) {
                 BillReturnScreen(onBack = { navController.popBackStack() })
             }
         }
+    }
+
+    // First-run welcome — invites the user into the hands-on setup.
+    var showWelcome by remember { mutableStateOf(!OnboardingPrefs.seen(context)) }
+    if (showWelcome && guideStep == GuideStep.SHOP_PROFILE) {
+        AlertDialog(
+            onDismissRequest = { },
+            title = { Text("Patta mein swaagat 🙏") },
+            text = { Text("Chaliye 3 aasaan step mein aapki dukaan set karte hain — main har kadam pe bataunga kya karna hai. Pehle dukaan ki details.") },
+            confirmButton = { TextButton(onClick = { showWelcome = false }) { Text("Chaliye shuru karein") } },
+            dismissButton = {
+                TextButton(onClick = { showWelcome = false; guideVm.controller.skip(); OnboardingPrefs.markSeen(context) }) { Text("Baad mein") }
+            },
+        )
+    }
+
+    // Guide completed — celebrate + tell them the tour can be replayed.
+    if (guideFinished) {
+        AlertDialog(
+            onDismissRequest = { guideVm.controller.clearFinished() },
+            title = { Text("Ho gaya! 🎉") },
+            text = { Text("Aapne pehla bill bana liya! Ab aap taiyaar hain. Baaki features — Supplier, Khata, Expiry, Reports, Voice — 'More' mein hain. Tour dobara: More → Madad → App Tour.") },
+            confirmButton = { TextButton(onClick = { guideVm.controller.clearFinished() }) { Text("Badhiya!") } },
+        )
     }
 }
 

@@ -51,7 +51,7 @@ import com.patta.pharmacy.data.local.entity.SupplierLedgerEntry
         PurchaseOrderItemEntity::class,
         com.patta.pharmacy.data.local.entity.ScheduleH1Entry::class,
     ],
-    version = 5,
+    version = 6,
     exportSchema = true,
 )
 abstract class PattaDatabase : RoomDatabase() {

@@ -47,6 +47,7 @@ class MedicineRepository @Inject constructor(
         isScheduleH1: Boolean,
         isFridgeItem: Boolean,
         barcode: String?,
+        defaultDosage: String = "",
         openingQty: Double = 0.0,
         openingBatchNo: String = "",
         openingExpiryYm: Int? = null,
@@ -73,6 +74,7 @@ class MedicineRepository @Inject constructor(
             isScheduleH1 = isScheduleH1,
             isFridgeItem = isFridgeItem,
             barcode = barcode?.trim()?.ifBlank { null },
+            defaultDosage = defaultDosage.trim(),
             createdAt = existing?.createdAt ?: now,
             updatedAt = now,
         )

@@ -36,6 +36,9 @@ private val moreSections = listOf(
     "Voice" to listOf(
         MoreItem("Voice Assistant", "Bolke poocho — collection, stock, payment", "voice_assistant"),
     ),
+    "Madad" to listOf(
+        MoreItem("App Tour", "Saare features dobara dekho", "tour"),
+    ),
     "Settings" to listOf(
         MoreItem("Shop Profile", "Naam, license, GSTIN", "shop_profile"),
         MoreItem("Schedule H1 Register", "Prescription wali dawai ka record", "h1_register"),

@@ -53,6 +53,7 @@ data class MedicineEntity(
     val isScheduleH1: Boolean = false,
     val isFridgeItem: Boolean = false,
     val barcode: String? = null,
+    val defaultDosage: String = "",           // e.g. "1-0-1 · khaana ke baad" — prefilled on bills
     val createdAt: Long,
     val updatedAt: Long,
     val isDeleted: Boolean = false,
@@ -159,6 +160,7 @@ data class BillItemEntity(
     val gstPercent: Int,
     val lineTotalPaise: Long,
     val returnedQty: Double = 0.0,            // packs already returned
+    val dosage: String = "",                  // how to take it — printed on the bill
 )
 
 @Entity(tableName = "purchases", indices = [Index("supplierId"), Index("invoiceDate"), Index("storeId")])

@@ -34,7 +34,8 @@ object BillPdf {
         val lineH = 18
         val topPad = 24
         val bodyLines = bill.lines.size
-        val pageHeight = topPad + (10 + bodyLines + 6) * lineH + 40
+        val dosageLines = bill.lines.count { it.dosage.isNotBlank() }
+        val pageHeight = topPad + (10 + bodyLines + dosageLines + 6) * lineH + 40
         val page = doc.startPage(PdfDocument.PageInfo.Builder(pageWidth, pageHeight, 1).create())
         val c = page.canvas
 
@@ -59,12 +60,19 @@ object BillPdf {
         c.drawText(dateStr, rightX, y.toFloat(), right); y += lineH
         c.drawLine(left, y.toFloat(), rightX, y.toFloat(), small); y += lineH
 
+        val dosagePaint = Paint().apply { textSize = 9f; color = 0xFF00685B.toInt(); isFakeBoldText = true }
         bill.lines.forEach { line ->
             c.drawText(line.name.take(24), left, y.toFloat(), normal)
             c.drawText(Money.format(line.lineTotalPaise), rightX, y.toFloat(), right)
             y += 13
             c.drawText("${line.qty} ${line.unitLabel} x ${Money.format(line.ratePaise)}", left + 6, y.toFloat(), small)
-            y += lineH
+            y += 13
+            if (line.dosage.isNotBlank()) {
+                c.drawText("→ ${line.dosage.take(40)}", left + 6, y.toFloat(), dosagePaint)
+                y += lineH
+            } else {
+                y += (lineH - 13)
+            }
         }
 
         c.drawLine(left, y.toFloat(), rightX, y.toFloat(), small); y += lineH

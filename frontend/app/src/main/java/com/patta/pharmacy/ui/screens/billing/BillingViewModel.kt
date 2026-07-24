@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -51,6 +52,7 @@ class BillingViewModel @Inject constructor(
     private val missedSaleRepository: MissedSaleRepository,
     private val scheduleH1Repository: ScheduleH1Repository,
     storeRepository: StoreRepository,
+    private val guide: com.patta.pharmacy.ui.guide.GuideController,
     private val voskEngine: VoskEngine,
 ) : ViewModel() {
 
@@ -125,6 +127,7 @@ class BillingViewModel @Inject constructor(
                 unitsPerPack = row.medicine.unitsPerPack,
                 allowLooseSale = row.medicine.allowLooseSale,
                 isScheduleH1 = row.medicine.isScheduleH1,
+                dosage = row.medicine.defaultDosage,
                 perTablet = loose,
                 qty = 1,
                 availablePacks = row.batchQty,
@@ -244,6 +247,11 @@ class BillingViewModel @Inject constructor(
         }
     }
 
+    /** Edit the dosage text on a cart line (defaults from the medicine). */
+    fun changeDosage(index: Int, dosage: String) {
+        _cart.value = _cart.value.mapIndexed { i, line -> if (i != index) line else line.copy(dosage = dosage) }
+    }
+
     fun removeLine(index: Int) {
         _cart.value = _cart.value.filterIndexed { i, _ -> i != index }
     }
@@ -273,14 +281,17 @@ class BillingViewModel @Inject constructor(
         viewModelScope.launch {
             runCatching { repository.createBill(lines, paymentMode, customerId) }
                 .onSuccess { res ->
+                    val phone = customerId?.let { customerRepository.customerRow(it).first()?.customer?.phone }.orEmpty()
                     _lastBill.value = CompletedBill(
                         billNo = res.billNo,
                         dateTimeMillis = System.currentTimeMillis(),
                         paymentMode = paymentMode,
                         lines = lines,
                         totals = res.totals,
+                        customerPhone = phone,
                     )
                     _cart.value = emptyList()
+                    guide.complete(com.patta.pharmacy.ui.guide.GuideStep.MAKE_BILL)
                 }
                 .onFailure { _message.value = "Bill save nahi hua: ${it.message}" }
         }
